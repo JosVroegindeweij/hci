@@ -52,7 +52,7 @@ public class ButtonPanel extends JPanel
 			
 			
 		
-		case COLOUR:
+		case COLOR:
 			JButton colorRed = new JButton("");
 	        add(colorRed);
 	        colorRed.addActionListener(input);

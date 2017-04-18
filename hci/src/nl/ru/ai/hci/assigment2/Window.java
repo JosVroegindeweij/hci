@@ -10,7 +10,9 @@ public class Window extends JFrame
 	{
 		// ‘super ’ calls a function inherited from the parent class ( JFrame )
 		super();
+		// sets name of window
 		setTitle("Callbacks");
+		// sets to window to FullScreen
 		setExtendedState(JFrame.MAXIMIZED_BOTH);
 		// Make sure the window appears in the middle of your screen
 		setLocationRelativeTo(null);
@@ -18,11 +20,12 @@ public class Window extends JFrame
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		// Chooses a certain layout type for the elements in this frame
 		getContentPane().setLayout(new BorderLayout());
-		// TODO : add elements to the content pane
+		// Make a new DrawPanel, an InputHandler, and 2 ButtonPanels
 		DrawPanel dp = new DrawPanel();
 		InputHandler input = new InputHandler(dp);
+		// ButtonPanel 1 is for shapes, ButtonPanel 2 for COLOR
 		ButtonPanel bp = new ButtonPanel(dp, input, ButtonPanelType.SHAPES);
-		ButtonPanel bp2 = new ButtonPanel(dp, input, ButtonPanelType.COLOUR);
+		ButtonPanel bp2 = new ButtonPanel(dp, input, ButtonPanelType.COLOR);
 		// Places the DrawPanel in the center of the frame
 		getContentPane().add(dp, BorderLayout.CENTER);
 		// Places the ButtonPanel in the top of the frame
