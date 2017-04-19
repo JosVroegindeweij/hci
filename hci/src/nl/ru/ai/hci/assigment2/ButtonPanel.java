@@ -8,14 +8,18 @@ import javax.swing.JPanel;
 public class ButtonPanel extends JPanel {
 	private JButton fill, outline;
 
-	/** Creates a ButtonPanel (a group of buttons)
+	/**
+	 * Creates a ButtonPanel (a group of buttons)
 	 * 
-	 * @param dp = a DrawPanel
-	 * @param input = an InputHandler
-	 * @param type = the type of ButtonPanel
+	 * @param dp
+	 *            = a DrawPanel
+	 * @param input
+	 *            = an InputHandler
+	 * @param type
+	 *            = the type of ButtonPanel
 	 * 
 	 */
-	
+
 	public ButtonPanel(DrawPanel dp, InputHandler input, ButtonPanelType type) {
 		super();
 		switch (type) {
@@ -55,10 +59,10 @@ public class ButtonPanel extends JPanel {
 			add(outline);
 			outline.addActionListener(input);
 			outline.setActionCommand("outline");
-			this.outline=outline;
+			this.outline = outline;
 			break;
 
-		case COLOR: 
+		case COLOR:
 			JButton colorRed = new JButton("");
 			add(colorRed);
 			colorRed.addActionListener(input);
@@ -120,14 +124,22 @@ public class ButtonPanel extends JPanel {
 			colorWhite.setBackground(Color.WHITE);
 			break;
 		}
-		
-		
-		}
+
+	}
+
 	public void changeFillColor(Color fillColor) {
 		this.fill.setBackground(fillColor);
 	}
-	
+
 	public void changeOutlineColor(Color outlineColor) {
 		this.outline.setBackground(outlineColor);
+	}
+	
+	public JButton getFill(){
+		return this.fill;
+	}
+	
+	public JButton getOutline(){
+		return this.outline;
 	}
 }

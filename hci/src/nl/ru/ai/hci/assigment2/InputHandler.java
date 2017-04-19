@@ -125,27 +125,34 @@ public class InputHandler implements ActionListener, MouseListener, MouseMotionL
 	@Override
 	public void mousePressed(MouseEvent m) {
 		System.out.println("MousePressed");
+		Color fillColor = dp.getbpList().get(0).getFill().getBackground();
+		Color outlineColor = dp.getbpList().get(0).getOutline().getBackground();
 		switch (this.mode) {
 		case RECTANGLE:
-			dp.addRectangle(m.getX(), m.getY(), Color.BLACK, Color.BLACK);
+			dp.addRectangle(m.getX(), m.getY(), fillColor, outlineColor); 
 			break;
 		case ELLIPSE:
-			dp.addEllipse(m.getX(), m.getY(), Color.BLACK, Color.BLACK);
+			dp.addEllipse(m.getX(), m.getY(), fillColor, outlineColor);
 			break;
 		case LINE:
-			dp.addLine(m.getX(), m.getY(), Color.BLACK, Color.BLACK);
+			dp.addLine(m.getX(), m.getY(), fillColor);
 			break;
 		case DELETE:
 			dp.deleteShape(m.getX(), m.getY());
 			break;
-		case FILL:
-			// dp.getbpList().get(0).changeFillColor(this.fill);
-			// dp.changeFill(m.getX(), m.getY(), fill, outline);
+		default:
+			dp.changeShapeColor(m.getX(),m.getY());
 			break;
-		case OUTLINE:
-			// dp.getbpList().get(0).changeOutlineColor(this.outline);
-			// dp.changeOutline(m.getX(), m.getY(), fill, outline);
-			break;
+//		case FILL:
+//			dp.changeFill(m.getX(), m.getY());
+//			// dp.getbpList().get(0).changeFillColor(this.fill);
+//			// dp.changeFill(m.getX(), m.getY(), fill, outline);
+//			break;
+//		case OUTLINE:
+//			dp.changeOutline(m.getX(), m.getY());
+//			// dp.getbpList().get(0).changeOutlineColor(this.outline);
+//			// dp.changeOutline(m.getX(), m.getY(), fill, outline);
+//			break;
 		}
 	}
 

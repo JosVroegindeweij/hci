@@ -24,13 +24,15 @@ public class DrawPanel extends JPanel {
 	 *            = The x-coordinate of your first click
 	 * @param y1
 	 *            = the y-coordinate of your first click
-	 * @param c
-	 *            = the color of the rectangle
+	 * @param fill
+	 *            = the color of the rectangle fill
+	 * @param outline
+	 *            = the color of the rectangle outline
 	 */
 	public void addRectangle(int x1, int y1, Color fill, Color outline) {
 		int x2 = x1;
 		int y2 = y1;
-		shapesList.add(new MyRectangle(x1, y1, x2, y2, outline, fill));
+		shapesList.add(new MyRectangle(x1, y1, x2, y2, fill, outline, 1));
 	}
 
 	/**
@@ -48,7 +50,7 @@ public class DrawPanel extends JPanel {
 	public void addEllipse(int x1, int y1, Color fill, Color outline) {
 		int x2 = x1;
 		int y2 = y1;
-		shapesList.add(new MyEllipse(x1, y1, x2, y2, fill, outline));
+		shapesList.add(new MyEllipse(x1, y1, x2, y2, fill, outline, 1));
 	}
 
 	/**
@@ -61,10 +63,10 @@ public class DrawPanel extends JPanel {
 	 * @param c
 	 *            = the color of the line
 	 */
-	public void addLine(int x1, int y1, Color fill, Color outline) {
+	public void addLine(int x1, int y1, Color fill) {
 		int x2 = x1;
 		int y2 = y1;
-		shapesList.add(new MyLine(x1, y1, x2, y2, fill));
+		shapesList.add(new MyLine(x1, y1, x2, y2, fill, 1));
 		System.out.println("this is where I draw the line");
 	}
 
@@ -103,7 +105,9 @@ public class DrawPanel extends JPanel {
 	 * @param outline
 	 *            = color of the outline
 	 */
-	public void changeFill(int xClick, int yClick, Color fill, Color outline) {
+	public void changeShapeColor(int xClick, int yClick) {
+		Color fill = bpList.get(0).getFill().getBackground();
+		Color outline = bpList.get(0).getOutline().getBackground();
 		if (shapesList.size() > 0) {
 			boolean shapeFound = false;
 			int i = shapesList.size() - 1;
@@ -115,11 +119,11 @@ public class DrawPanel extends JPanel {
 					double x2 = coordinates[2];
 					double y2 = coordinates[3];
 					if (shapesList.get(i).shape() == "Ellipse")
-						shapesList.add(new MyEllipse(x1, y1, x2, y2, fill, outline));
+						shapesList.add(new MyEllipse(x1, y1, x2, y2, fill, outline, 1));
 					if (shapesList.get(i).shape() == "Rectangle")
-						shapesList.add(new MyRectangle(x1, y1, x2, y2, fill, outline));
+						shapesList.add(new MyRectangle(x1, y1, x2, y2, fill, outline, 1));
 					if (shapesList.get(i).shape() == "Line")
-						shapesList.add(new MyLine(x1, y1, x2, y2, fill));
+						shapesList.add(new MyLine(x1, y1, x2, y2, fill, 1));
 					shapesList.remove(shapesList.get(i));
 					shapeFound = true;
 				}
@@ -128,43 +132,46 @@ public class DrawPanel extends JPanel {
 		} else
 			System.out.println("There is no shape to change.");
 	}
-	/**
-	 * Changes color of the outline of a shape
-	 * 
-	 * @param xClick
-	 *            = x-coordinate of click
-	 * @param yClick
-	 *            = y-coordinate of click
-	 * @param fill
-	 *            = color of the fill
-	 * @param outline
-	 *            = color of the outline
-	 */
-	public void changeOutline(int xClick, int yClick, Color fill, Color outline) {
-		if (shapesList.size() > 0) {
-			boolean shapeFound = false;
-			int i = shapesList.size() - 1;
-			while (!shapeFound && i >= 0) {
-				if (shapesList.get(i).contains(xClick, yClick)) {
-					double[] coordinates = shapesList.get(i).getCoordinates();
-					double x1 = coordinates[0];
-					double y1 = coordinates[1];
-					double x2 = coordinates[2];
-					double y2 = coordinates[3];
-					if (shapesList.get(i).shape() == "Ellipse")
-						shapesList.add(new MyEllipse(x1, y1, x2, y2, fill, outline));
-					if (shapesList.get(i).shape() == "Rectangle")
-						shapesList.add(new MyRectangle(x1, y1, x2, y2, fill, outline));
-					if (shapesList.get(i).shape() == "Line")
-						shapesList.add(new MyLine(x1, y1, x2, y2, fill));
-					shapesList.remove(shapesList.get(i));
-					shapeFound = true;
-				}
-				i--;
-			}
-		} else
-			System.out.println("There is no shape to change.");
-	}
+
+	// /**
+	// * Changes color of the outline of a shape
+	// *
+	// * @param xClick
+	// * = x-coordinate of click
+	// * @param yClick
+	// * = y-coordinate of click
+	// * @param fill
+	// * = color of the fill
+	// * @param outline
+	// * = color of the outline
+	// */
+	// public void changeOutline(int xClick, int yClick) {
+	// Color fill = bpList.get(0).getFill().getBackground();
+	// Color outline = bpList.get(0).getOutline().getBackground();
+	// if (shapesList.size() > 0) {
+	// boolean shapeFound = false;
+	// int i = shapesList.size() - 1;
+	// while (!shapeFound && i >= 0) {
+	// if (shapesList.get(i).contains(xClick, yClick)) {
+	// double[] coordinates = shapesList.get(i).getCoordinates();
+	// double x1 = coordinates[0];
+	// double y1 = coordinates[1];
+	// double x2 = coordinates[2];
+	// double y2 = coordinates[3];
+	// if (shapesList.get(i).shape() == "Ellipse")
+	// shapesList.add(new MyEllipse(x1, y1, x2, y2, fill, outline));
+	// if (shapesList.get(i).shape() == "Rectangle")
+	// shapesList.add(new MyRectangle(x1, y1, x2, y2, fill, outline));
+	// if (shapesList.get(i).shape() == "Line")
+	// shapesList.add(new MyLine(x1, y1, x2, y2, fill));
+	// shapesList.remove(shapesList.get(i));
+	// shapeFound = true;
+	// }
+	// i--;
+	// }
+	// } else
+	// System.out.println("There is no shape to change.");
+	// }
 
 	@Override
 	public void paintComponent(Graphics g) {
@@ -178,12 +185,12 @@ public class DrawPanel extends JPanel {
 	public ArrayList<Drawable> getShapesList() {
 		return this.shapesList;
 	}
-	
+
 	public void addButtonPanel(ArrayList<ButtonPanel> bpList) {
 		this.bpList = bpList;
 	}
-	
-	public ArrayList<ButtonPanel> getbpList(){
+
+	public ArrayList<ButtonPanel> getbpList() {
 		return this.bpList;
 	}
 }

@@ -1,5 +1,6 @@
 package nl.ru.ai.hci.assigment2;
 
+import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.geom.Line2D;
@@ -8,6 +9,7 @@ public class MyLine implements Drawable {
 	private double x1, y1, x2, y2;
 	public String name = "line";
 	private Color fill;
+	private int lineWidth;
 
 	public MyLine() {
 	}
@@ -26,12 +28,13 @@ public class MyLine implements Drawable {
 	 * @param color
 	 *            = the color of the line
 	 */
-	public MyLine(double x1, double y1, double x2, double y2, Color fill) {
+	public MyLine(double x1, double y1, double x2, double y2, Color fill, int lineWidth) {
 		this.x1 = x1;
 		this.y1 = y1;
 		this.x2 = x2;
 		this.y2 = y2;
 		this.fill = fill;
+		this.lineWidth = lineWidth;
 	}
 
 	/**
@@ -44,6 +47,7 @@ public class MyLine implements Drawable {
 	public void draw(Graphics2D g) {
 		// Creates a line with the coordinates stored in this object
 		Line2D line = new Line2D.Double(x1, y1, x2, y2);
+		g.setStroke(new BasicStroke(lineWidth));
 		// Sets the color of the line
 		g.setColor(this.fill);
 		// Draws the line

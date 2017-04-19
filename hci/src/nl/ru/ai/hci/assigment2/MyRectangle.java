@@ -1,5 +1,6 @@
 package nl.ru.ai.hci.assigment2;
 
+import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.geom.Rectangle2D;
@@ -8,6 +9,7 @@ public class MyRectangle implements Drawable {
 	private double x1, y1, x2, y2;
 	public String name = "rectangle";
 	private Color fill, outline;
+	private int lineWidth;
 
 	public MyRectangle() {
 	}
@@ -26,13 +28,14 @@ public class MyRectangle implements Drawable {
 	 * @param color
 	 *            = the color of the rectangle
 	 */
-	public MyRectangle(double x1, double y1, double x2, double y2, Color fill, Color outline) {
+	public MyRectangle(double x1, double y1, double x2, double y2, Color fill, Color outline, int lineWidth) {
 		this.x1 = x1;
 		this.y1 = y1;
 		this.x2 = x2;
 		this.y2 = y2;
 		this.fill = fill;
 		this.outline = outline;
+		this.lineWidth = lineWidth;
 	}
 
 	/**
@@ -52,6 +55,7 @@ public class MyRectangle implements Drawable {
 		// Creates a rectangle with these values
 		Rectangle2D r = new Rectangle2D.Double(x, y, width, height);
 		// Sets the color of the rectangle
+		g.setStroke(new BasicStroke(lineWidth));
 		g.setColor(outline);
 		// Draws the rectangle
 		g.draw(r);
