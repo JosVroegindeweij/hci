@@ -1,7 +1,6 @@
 package nl.ru.ai.hci.assigment2;
 
 import java.awt.BorderLayout;
-import java.awt.Dimension;
 import javax.swing.JFrame;
 
 public class Window extends JFrame

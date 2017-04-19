@@ -4,10 +4,8 @@ import java.awt.Color;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
-import javax.swing.SwingConstants;
 
 public class ButtonPanel extends JPanel {
-	private DrawPanel dp;
 
 	/** Creates a ButtonPanel (a group of buttons)
 	 * 
@@ -19,8 +17,6 @@ public class ButtonPanel extends JPanel {
 	
 	public ButtonPanel(DrawPanel dp, InputHandler input, ButtonPanelType type) {
 		super();
-		this.dp = dp;
-
 		switch (type) {
 		case SHAPES:
 			// Makes a new button called ell with text "Ellipse"
