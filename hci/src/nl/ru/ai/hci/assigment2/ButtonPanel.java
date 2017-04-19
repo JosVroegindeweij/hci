@@ -6,6 +6,7 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 
 public class ButtonPanel extends JPanel {
+	private JButton fill, outline;
 
 	/** Creates a ButtonPanel (a group of buttons)
 	 * 
@@ -48,26 +49,27 @@ public class ButtonPanel extends JPanel {
 			add(fill);
 			fill.addActionListener(input);
 			fill.setActionCommand("fill");
+			this.fill = fill;
 
 			JButton outline = new JButton("Outline");
 			add(outline);
 			outline.addActionListener(input);
 			outline.setActionCommand("outline");
-
+			this.outline=outline;
 			break;
 
-		case COLOR:
+		case COLOR: 
 			JButton colorRed = new JButton("");
 			add(colorRed);
 			colorRed.addActionListener(input);
 			colorRed.setActionCommand("colorRed");
 			colorRed.setBackground(Color.RED);
 
-			JButton colorPurple = new JButton("");
-			add(colorPurple);
-			colorPurple.addActionListener(input);
-			colorPurple.setActionCommand("colorPurple");
-			colorPurple.setBackground(Color.MAGENTA);
+			JButton colorMagenta = new JButton("");
+			add(colorMagenta);
+			colorMagenta.addActionListener(input);
+			colorMagenta.setActionCommand("colorMagenta");
+			colorMagenta.setBackground(Color.MAGENTA);
 
 			JButton colorPink = new JButton("");
 			add(colorPink);
@@ -118,5 +120,14 @@ public class ButtonPanel extends JPanel {
 			colorWhite.setBackground(Color.WHITE);
 			break;
 		}
+		
+		
+		}
+	public void changeFillColor(Color fillColor) {
+		this.fill.setBackground(fillColor);
+	}
+	
+	public void changeOutlineColor(Color outlineColor) {
+		this.outline.setBackground(outlineColor);
 	}
 }

@@ -7,7 +7,7 @@ import java.awt.geom.Line2D;
 public class MyLine implements Drawable {
 	private double x1, y1, x2, y2;
 	public String name = "line";
-	private Color c;
+	private Color fill;
 
 	public MyLine() {
 	}
@@ -26,12 +26,12 @@ public class MyLine implements Drawable {
 	 * @param color
 	 *            = the color of the line
 	 */
-	public MyLine(double x1, double y1, double x2, double y2, Color c) {
+	public MyLine(double x1, double y1, double x2, double y2, Color fill) {
 		this.x1 = x1;
 		this.y1 = y1;
 		this.x2 = x2;
 		this.y2 = y2;
-		this.c = c;
+		this.fill = fill;
 	}
 
 	/**
@@ -43,11 +43,11 @@ public class MyLine implements Drawable {
 	@Override
 	public void draw(Graphics2D g) {
 		// Creates a line with the coordinates stored in this object
-		Line2D l = new Line2D.Double(x1, y1, x2, y2);
+		Line2D line = new Line2D.Double(x1, y1, x2, y2);
 		// Sets the color of the line
-		g.setColor(c);
+		g.setColor(this.fill);
 		// Draws the line
-		g.draw(l);
+		g.draw(line);
 	}
 
 	/**

@@ -8,6 +8,7 @@ import javax.swing.JPanel;
 
 public class DrawPanel extends JPanel {
 	private ArrayList<Drawable> shapesList = new ArrayList<Drawable>();
+	private ArrayList<ButtonPanel> bpList = new ArrayList<ButtonPanel>();
 
 	/**
 	 * Creates a new DrawPanel
@@ -26,10 +27,10 @@ public class DrawPanel extends JPanel {
 	 * @param c
 	 *            = the color of the rectangle
 	 */
-	public void addRectangle(int x1, int y1, Color c) {
+	public void addRectangle(int x1, int y1, Color fill, Color outline) {
 		int x2 = x1;
 		int y2 = y1;
-		shapesList.add(new MyRectangle(x1, y1, x2, y2, c));
+		shapesList.add(new MyRectangle(x1, y1, x2, y2, outline, fill));
 	}
 
 	/**
@@ -60,10 +61,10 @@ public class DrawPanel extends JPanel {
 	 * @param c
 	 *            = the color of the line
 	 */
-	public void addLine(int x1, int y1, Color c) {
+	public void addLine(int x1, int y1, Color fill, Color outline) {
 		int x2 = x1;
 		int y2 = y1;
-		shapesList.add(new MyLine(x1, y1, x2, y2, c));
+		shapesList.add(new MyLine(x1, y1, x2, y2, fill));
 		System.out.println("this is where I draw the line");
 	}
 
@@ -116,7 +117,7 @@ public class DrawPanel extends JPanel {
 					if (shapesList.get(i).shape() == "Ellipse")
 						shapesList.add(new MyEllipse(x1, y1, x2, y2, fill, outline));
 					if (shapesList.get(i).shape() == "Rectangle")
-						shapesList.add(new MyRectangle(x1, y1, x2, y2, fill));
+						shapesList.add(new MyRectangle(x1, y1, x2, y2, fill, outline));
 					if (shapesList.get(i).shape() == "Line")
 						shapesList.add(new MyLine(x1, y1, x2, y2, fill));
 					shapesList.remove(shapesList.get(i));
@@ -153,7 +154,7 @@ public class DrawPanel extends JPanel {
 					if (shapesList.get(i).shape() == "Ellipse")
 						shapesList.add(new MyEllipse(x1, y1, x2, y2, fill, outline));
 					if (shapesList.get(i).shape() == "Rectangle")
-						shapesList.add(new MyRectangle(x1, y1, x2, y2, fill));
+						shapesList.add(new MyRectangle(x1, y1, x2, y2, fill, outline));
 					if (shapesList.get(i).shape() == "Line")
 						shapesList.add(new MyLine(x1, y1, x2, y2, fill));
 					shapesList.remove(shapesList.get(i));
@@ -176,5 +177,13 @@ public class DrawPanel extends JPanel {
 
 	public ArrayList<Drawable> getShapesList() {
 		return this.shapesList;
+	}
+	
+	public void addButtonPanel(ArrayList<ButtonPanel> bpList) {
+		this.bpList = bpList;
+	}
+	
+	public ArrayList<ButtonPanel> getbpList(){
+		return this.bpList;
 	}
 }

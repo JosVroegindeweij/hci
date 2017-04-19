@@ -10,8 +10,7 @@ import java.awt.event.MouseMotionListener;
 public class InputHandler implements ActionListener, MouseListener, MouseMotionListener {
 	private DrawPanel dp;
 	private Mode mode;
-	private Color fill;
-	private Color outline = Color.BLACK;
+	// private Color fill, outline;
 
 	/**
 	 * Makes a new InputHandler
@@ -55,34 +54,64 @@ public class InputHandler implements ActionListener, MouseListener, MouseMotionL
 			this.mode = Mode.OUTLINE;
 			break;
 		case "colorRed":
-			fill = Color.RED;
+			if (this.mode == Mode.FILL)
+				dp.getbpList().get(0).changeFillColor(Color.RED);
+			else if (this.mode == Mode.OUTLINE)
+				dp.getbpList().get(0).changeOutlineColor(Color.RED);
 			break;
-		case "colorPurple":
-			fill = Color.MAGENTA;
+		case "colorMagenta":
+			if (this.mode == Mode.FILL)
+				dp.getbpList().get(0).changeFillColor(Color.MAGENTA);
+			else if (this.mode == Mode.OUTLINE)
+				dp.getbpList().get(0).changeOutlineColor(Color.MAGENTA);
 			break;
 		case "colorPink":
-			fill = Color.PINK;
+			if (this.mode == Mode.FILL)
+				dp.getbpList().get(0).changeFillColor(Color.PINK);
+			else if (this.mode == Mode.OUTLINE)
+				dp.getbpList().get(0).changeOutlineColor(Color.PINK);
 			break;
 		case "colorOrange":
-			fill = Color.ORANGE;
+			if (this.mode == Mode.FILL)
+				dp.getbpList().get(0).changeFillColor(Color.ORANGE);
+			else if (this.mode == Mode.OUTLINE)
+				dp.getbpList().get(0).changeOutlineColor(Color.ORANGE);
 			break;
 		case "colorYellow":
-			fill = Color.YELLOW;
+			if (this.mode == Mode.FILL)
+				dp.getbpList().get(0).changeFillColor(Color.YELLOW);
+			else if (this.mode == Mode.OUTLINE)
+				dp.getbpList().get(0).changeOutlineColor(Color.YELLOW);
 			break;
 		case "colorGreen":
-			fill = Color.GREEN;
+			if (this.mode == Mode.FILL)
+				dp.getbpList().get(0).changeFillColor(Color.GREEN);
+			else if (this.mode == Mode.OUTLINE)
+				dp.getbpList().get(0).changeOutlineColor(Color.GREEN);
 			break;
 		case "colorBlue":
-			fill = Color.BLUE;
+			if (this.mode == Mode.FILL)
+				dp.getbpList().get(0).changeFillColor(Color.BLUE);
+			else if (this.mode == Mode.OUTLINE)
+				dp.getbpList().get(0).changeOutlineColor(Color.BLUE);
 			break;
 		case "colorBlack":
-			fill = Color.BLACK;
+			if (this.mode == Mode.FILL)
+				dp.getbpList().get(0).changeFillColor(Color.BLACK);
+			else if (this.mode == Mode.OUTLINE)
+				dp.getbpList().get(0).changeOutlineColor(Color.BLACK);
 			break;
 		case "colorGray":
-			fill = Color.DARK_GRAY;
+			if (this.mode == Mode.FILL)
+				dp.getbpList().get(0).changeFillColor(Color.GRAY);
+			else if (this.mode == Mode.OUTLINE)
+				dp.getbpList().get(0).changeOutlineColor(Color.GRAY);
 			break;
 		case "colorWhite":
-			fill = Color.WHITE;
+			if (this.mode == Mode.FILL)
+				dp.getbpList().get(0).changeFillColor(Color.WHITE);
+			else if (this.mode == Mode.OUTLINE)
+				dp.getbpList().get(0).changeOutlineColor(Color.WHITE);
 			break;
 		}
 	}
@@ -98,21 +127,25 @@ public class InputHandler implements ActionListener, MouseListener, MouseMotionL
 		System.out.println("MousePressed");
 		switch (this.mode) {
 		case RECTANGLE:
-			dp.addRectangle(m.getX(), m.getY(), fill);
+			dp.addRectangle(m.getX(), m.getY(), Color.BLACK, Color.BLACK);
 			break;
 		case ELLIPSE:
-			dp.addEllipse(m.getX(), m.getY(), fill, outline);
+			dp.addEllipse(m.getX(), m.getY(), Color.BLACK, Color.BLACK);
 			break;
 		case LINE:
-			dp.addLine(m.getX(), m.getY(), fill);
+			dp.addLine(m.getX(), m.getY(), Color.BLACK, Color.BLACK);
 			break;
 		case DELETE:
 			dp.deleteShape(m.getX(), m.getY());
 			break;
 		case FILL:
-			dp.changeFill(m.getX(), m.getY(), fill, outline);
+			// dp.getbpList().get(0).changeFillColor(this.fill);
+			// dp.changeFill(m.getX(), m.getY(), fill, outline);
+			break;
 		case OUTLINE:
-			dp.changeOutline(m.getX(), m.getY(), fill, outline);
+			// dp.getbpList().get(0).changeOutlineColor(this.outline);
+			// dp.changeOutline(m.getX(), m.getY(), fill, outline);
+			break;
 		}
 	}
 

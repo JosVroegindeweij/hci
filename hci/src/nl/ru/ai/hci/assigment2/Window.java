@@ -1,6 +1,8 @@
 package nl.ru.ai.hci.assigment2;
 
 import java.awt.BorderLayout;
+import java.util.ArrayList;
+
 import javax.swing.JFrame;
 
 public class Window extends JFrame
@@ -25,6 +27,9 @@ public class Window extends JFrame
 		// ButtonPanel 1 is for shapes, ButtonPanel 2 for COLOR
 		ButtonPanel bp = new ButtonPanel(dp, input, ButtonPanelType.SHAPES);
 		ButtonPanel bp2 = new ButtonPanel(dp, input, ButtonPanelType.COLOR);
+		ArrayList<ButtonPanel> bpList = new ArrayList<ButtonPanel>();
+		bpList.add(bp); bpList.add(bp2);
+		dp.addButtonPanel(bpList);
 		// Places the DrawPanel in the correct place of the window
 		getContentPane().add(dp, BorderLayout.CENTER);
 		// Places the ButtonPanel in the correct place of the window
