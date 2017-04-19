@@ -6,46 +6,46 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
-import java.util.Random;
-import java.awt.Graphics;
 
-
-public class InputHandler implements ActionListener, MouseListener, MouseMotionListener
-{	
+public class InputHandler implements ActionListener, MouseListener, MouseMotionListener {
 	private DrawPanel dp;
 	private Mode mode;
 	private Color fill;
 	private Color outline = Color.BLACK;
-	public InputHandler(DrawPanel draw)
-	{
+
+	/**
+	 * Makes a new InputHandler
+	 * 
+	 * @param draw
+	 *            = a DrawPanel
+	 */
+	public InputHandler(DrawPanel draw) {
 		dp = draw;
+		// Adds itself as MouseListener to dp
 		dp.addMouseListener(this);
+		// Adds itself as MouseMotionListener to dp
 		dp.addMouseMotionListener(this);
 	}
-	public void actionPerformed(ActionEvent e) 
-	{
-		Random rand = new Random();
-		float r = rand.nextFloat();
-		float g = rand.nextFloat();
-		float b = rand.nextFloat();
-		Color randomColor = new Color(r, g, b);
-	
-		switch(e.getActionCommand())
-		{
+
+	/**
+	 * Perform an action based on an ActionEvent (specified in the
+	 * ".addActionListener()")
+	 * 
+	 * @param e
+	 *            = an ActionEvent
+	 */
+	public void actionPerformed(ActionEvent e) {
+		switch (e.getActionCommand()) {
 		case "rec":
-		//	dp.addRectangle();
 			this.mode = Mode.RECTANGLE;
 			break;
 		case "ell":
-		//	dp.addEllipse();
 			this.mode = Mode.ELLIPSE;
 			break;
 		case "line":
-		//	dp.addLine();
 			this.mode = Mode.LINE;
 			break;
 		case "del":
-		//	dp.deleteShape();
 			this.mode = Mode.DELETE;
 			break;
 		case "fill":
@@ -86,31 +86,17 @@ public class InputHandler implements ActionListener, MouseListener, MouseMotionL
 			break;
 		}
 	}
-	
+
+	/**
+	 * Perform an action based on a MouseEvent
+	 * 
+	 * @param m
+	 *            = a MouseEvent
+	 */
 	@Override
-	public void mouseClicked(MouseEvent m) 
-	{
-		//System.out.println("mouseClicked");
-	}
-	
-	@Override
-	public void mouseEntered(MouseEvent m) 
-	{
-		//System.out.println("mouseEntered");
-	}
-	
-	@Override
-	public void mouseExited(MouseEvent m) 
-	{
-		//System.out.println("mouseExited");
-	}
-	
-	@Override
-	public void mousePressed(MouseEvent m) 
-	{
+	public void mousePressed(MouseEvent m) {
 		System.out.println("MousePressed");
-		switch(this.mode)
-		{
+		switch (this.mode) {
 		case RECTANGLE:
 			dp.addRectangle(m.getX(), m.getY(), fill);
 			break;
@@ -122,43 +108,50 @@ public class InputHandler implements ActionListener, MouseListener, MouseMotionL
 			break;
 		case DELETE:
 			dp.deleteShape(m.getX(), m.getY());
-			break; 
+			break;
 		case FILL:
 			dp.changeFill(m.getX(), m.getY(), fill, outline);
 		case OUTLINE:
-			dp.changeOutline(m.getX(), m.getY(), fill,  outline);
+			dp.changeOutline(m.getX(), m.getY(), fill, outline);
 		}
 	}
-	
+
+	/**
+	 * performs an action based on a MouseEvent
+	 * 
+	 * @param m
+	 *            = a MouseEvent
+	 */
 	@Override
-	public void mouseDragged(MouseEvent m) 
-	{
-		if(this.mode != Mode.DELETE && this.mode != Mode.FILL&& this.mode != Mode.OUTLINE)
-		{
-		Drawable shapie = dp.getShapesList().get(dp.getShapesList().size()-1);
-		double [] coordinates = shapie.getCoordinates();
-		double x1 = coordinates[0];
-		double y1 = coordinates[1];
-		double x2 = m.getX();
-		double y2 = m.getY();
-		shapie.setCoordinates(x1, y1, x2, y2);
-		}	
-	}
-	
-	@Override
-	public void mouseMoved(MouseEvent m) 
-	{
-		//System.out.println("mouseMoved");
-	}
-	
-	@Override
-	public void mouseReleased(MouseEvent m) 
-	{
-		//System.out.println("mouseReleased");
+	public void mouseDragged(MouseEvent m) {
+		if (this.mode != Mode.DELETE && this.mode != Mode.FILL && this.mode != Mode.OUTLINE) {
+			Drawable shape = dp.getShapesList().get(dp.getShapesList().size() - 1);
+			double[] coordinates = shape.getCoordinates();
+			double x1 = coordinates[0];
+			double y1 = coordinates[1];
+			double x2 = m.getX();
+			double y2 = m.getY();
+			shape.setCoordinates(x1, y1, x2, y2);
+		}
 	}
 
+	@Override
+	public void mouseMoved(MouseEvent arg0) {
+	}
 
-	
-	
+	@Override
+	public void mouseClicked(MouseEvent e) {
+	}
 
+	@Override
+	public void mouseEntered(MouseEvent e) {
+	}
+
+	@Override
+	public void mouseExited(MouseEvent e) {
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent e) {
+	}
 }

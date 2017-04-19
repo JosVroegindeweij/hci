@@ -1,5 +1,4 @@
 package nl.ru.ai.hci.assigment2;
-import java.awt.Color;
 import java.awt.Graphics2D;
 
 public interface Drawable 

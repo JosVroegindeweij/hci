@@ -26,9 +26,9 @@ public class Window extends JFrame
 		// ButtonPanel 1 is for shapes, ButtonPanel 2 for COLOR
 		ButtonPanel bp = new ButtonPanel(dp, input, ButtonPanelType.SHAPES);
 		ButtonPanel bp2 = new ButtonPanel(dp, input, ButtonPanelType.COLOR);
-		// Places the DrawPanel in the center of the frame
+		// Places the DrawPanel in the correct place of the window
 		getContentPane().add(dp, BorderLayout.CENTER);
-		// Places the ButtonPanel in the top of the frame
+		// Places the ButtonPanel in the correct place of the window
 		getContentPane().add(bp, BorderLayout.NORTH);
 		getContentPane().add(bp2, BorderLayout.SOUTH);
 		// Set the window to visible ! Yup ... This is necessary

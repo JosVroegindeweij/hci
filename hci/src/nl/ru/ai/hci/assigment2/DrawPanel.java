@@ -4,134 +4,177 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.util.ArrayList;
-import java.util.Random;
-
 import javax.swing.JPanel;
 
-public class DrawPanel extends JPanel
-{
-	private Color color;
-	private ArrayList<Drawable> shapesList = new ArrayList <Drawable>();
-	
-	public DrawPanel()
-	{
-		super ();
-		color = Color.BLACK;
+public class DrawPanel extends JPanel {
+	private ArrayList<Drawable> shapesList = new ArrayList<Drawable>();
+
+	/**
+	 * Creates a new DrawPanel
+	 */
+	public DrawPanel() {
+		super();
 	}
-	
-	public void addRectangle(int x1, int y1, Color c)
-	{
+
+	/**
+	 * adds a rectangle to the shapeslist
+	 * 
+	 * @param x1
+	 *            = The x-coordinate of your first click
+	 * @param y1
+	 *            = the y-coordinate of your first click
+	 * @param c
+	 *            = the color of the rectangle
+	 */
+	public void addRectangle(int x1, int y1, Color c) {
 		int x2 = x1;
 		int y2 = y1;
 		shapesList.add(new MyRectangle(x1, y1, x2, y2, c));
 	}
-	
-	public void addEllipse(int x1, int y1, Color fill, Color outline)
-	{
+
+	/**
+	 * adds a ellipse to the shapeslist
+	 * 
+	 * @param x1
+	 *            = The x-coordinate of your first click
+	 * @param y1
+	 *            = the y-coordinate of your first click
+	 * @param fill
+	 *            = the color of the fill of the ellipse
+	 * @param outline
+	 *            = the color of the outline of the ellipse
+	 */
+	public void addEllipse(int x1, int y1, Color fill, Color outline) {
 		int x2 = x1;
 		int y2 = y1;
 		shapesList.add(new MyEllipse(x1, y1, x2, y2, fill, outline));
 	}
-	
-	public void addLine(int x1, int y1, Color c)
-	{
+
+	/**
+	 * adds a line to the shapeslist
+	 * 
+	 * @param x1
+	 *            = The x-coordinate of your first click
+	 * @param y1
+	 *            = the y-coordinate of your first click
+	 * @param c
+	 *            = the color of the line
+	 */
+	public void addLine(int x1, int y1, Color c) {
 		int x2 = x1;
 		int y2 = y1;
 		shapesList.add(new MyLine(x1, y1, x2, y2, c));
 		System.out.println("this is where I draw the line");
 	}
-	
-	public void deleteShape(int xClick, int yClick)
-	{
-		if(shapesList.size() > 0)
-		{
+
+	/**
+	 * delete shape(s) that contain the coordinates where you clicked
+	 * 
+	 * @param xClick
+	 *            = x-coordinate of click
+	 * @param yClick
+	 *            = y-coordinate of click
+	 */
+	public void deleteShape(int xClick, int yClick) {
+		if (shapesList.size() > 0) {
 			boolean shapeFound = false;
-			int i = shapesList.size()-1;
-			while(!shapeFound && i >= 0)
-			{
-				if(shapesList.get(i).contains(xClick, yClick))
-				{
+			int i = shapesList.size() - 1;
+			while (!shapeFound && i >= 0) {
+				if (shapesList.get(i).contains(xClick, yClick)) {
 					shapesList.remove(shapesList.get(i));
 					shapeFound = true;
 				}
 				i--;
 			}
-		}
-		else System.out.println("There is no shape to delete.");
+		} else
+			System.out.println("There is no shape to delete.");
 	}
-	
-	public void changeFill(int xClick, int yClick, Color fill, Color outline)
-	{
-		if(shapesList.size() > 0)
-		{
+
+	/**
+	 * Changes color of the fill of a shape
+	 * 
+	 * @param xClick
+	 *            = x-coordinate of click
+	 * @param yClick
+	 *            = y-coordinate of click
+	 * @param fill
+	 *            = color of the fill
+	 * @param outline
+	 *            = color of the outline
+	 */
+	public void changeFill(int xClick, int yClick, Color fill, Color outline) {
+		if (shapesList.size() > 0) {
 			boolean shapeFound = false;
-			int i = shapesList.size()-1;
-			while(!shapeFound && i >= 0)
-			{
-				if(shapesList.get(i).contains(xClick, yClick))
-				{
+			int i = shapesList.size() - 1;
+			while (!shapeFound && i >= 0) {
+				if (shapesList.get(i).contains(xClick, yClick)) {
 					double[] coordinates = shapesList.get(i).getCoordinates();
 					double x1 = coordinates[0];
 					double y1 = coordinates[1];
 					double x2 = coordinates[2];
 					double y2 = coordinates[3];
-					if(shapesList.get(i).shape() == "Ellipse")
+					if (shapesList.get(i).shape() == "Ellipse")
 						shapesList.add(new MyEllipse(x1, y1, x2, y2, fill, outline));
-					if(shapesList.get(i).shape() == "Rectangle")
+					if (shapesList.get(i).shape() == "Rectangle")
 						shapesList.add(new MyRectangle(x1, y1, x2, y2, fill));
-					if(shapesList.get(i).shape() == "Line")
+					if (shapesList.get(i).shape() == "Line")
 						shapesList.add(new MyLine(x1, y1, x2, y2, fill));
 					shapesList.remove(shapesList.get(i));
 					shapeFound = true;
 				}
 				i--;
 			}
-		}
-		else System.out.println("There is no shape to change.");
+		} else
+			System.out.println("There is no shape to change.");
 	}
-	
-	public void changeOutline(int xClick, int yClick, Color fill, Color outline) 
-	{
-		if(shapesList.size() > 0)
-		{
+	/**
+	 * Changes color of the outline of a shape
+	 * 
+	 * @param xClick
+	 *            = x-coordinate of click
+	 * @param yClick
+	 *            = y-coordinate of click
+	 * @param fill
+	 *            = color of the fill
+	 * @param outline
+	 *            = color of the outline
+	 */
+	public void changeOutline(int xClick, int yClick, Color fill, Color outline) {
+		if (shapesList.size() > 0) {
 			boolean shapeFound = false;
-			int i = shapesList.size()-1;
-			while(!shapeFound && i >= 0)
-			{
-				if(shapesList.get(i).contains(xClick, yClick))
-				{
+			int i = shapesList.size() - 1;
+			while (!shapeFound && i >= 0) {
+				if (shapesList.get(i).contains(xClick, yClick)) {
 					double[] coordinates = shapesList.get(i).getCoordinates();
 					double x1 = coordinates[0];
 					double y1 = coordinates[1];
 					double x2 = coordinates[2];
 					double y2 = coordinates[3];
-					if(shapesList.get(i).shape() == "Ellipse")
+					if (shapesList.get(i).shape() == "Ellipse")
 						shapesList.add(new MyEllipse(x1, y1, x2, y2, fill, outline));
-					if(shapesList.get(i).shape() == "Rectangle")
+					if (shapesList.get(i).shape() == "Rectangle")
 						shapesList.add(new MyRectangle(x1, y1, x2, y2, fill));
-					if(shapesList.get(i).shape() == "Line")
+					if (shapesList.get(i).shape() == "Line")
 						shapesList.add(new MyLine(x1, y1, x2, y2, fill));
 					shapesList.remove(shapesList.get(i));
 					shapeFound = true;
 				}
 				i--;
 			}
-		}
-		else System.out.println("There is no shape to change.");
+		} else
+			System.out.println("There is no shape to change.");
 	}
-		
+
 	@Override
-	public void paintComponent(Graphics g) 
-	{
+	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		Graphics2D g2d = (Graphics2D) g;
-		for(Drawable s : shapesList)
+		for (Drawable s : shapesList)
 			s.draw(g2d);
 		repaint();
 	}
-	
-	public ArrayList<Drawable> getShapesList()
-	{
+
+	public ArrayList<Drawable> getShapesList() {
 		return this.shapesList;
 	}
 }
