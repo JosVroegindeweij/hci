@@ -7,7 +7,7 @@ import java.awt.geom.Ellipse2D;
 public class MyEllipse implements Drawable {
 	private double x1, x2, y1, y2;
 	public String name = "ellipse";
-	private Color fill, outline;
+	private Color fill=Color.WHITE, outline=Color.GRAY;
 	private int lineWidth;
 
 	public MyEllipse() {

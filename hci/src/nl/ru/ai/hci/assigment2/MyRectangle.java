@@ -8,7 +8,7 @@ import java.awt.geom.Rectangle2D;
 public class MyRectangle implements Drawable {
 	private double x1, y1, x2, y2;
 	public String name = "rectangle";
-	private Color fill, outline;
+	private Color fill=Color.WHITE, outline=Color.GRAY;
 	private int lineWidth;
 
 	public MyRectangle() {

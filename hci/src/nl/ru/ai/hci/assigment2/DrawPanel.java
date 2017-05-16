@@ -9,6 +9,7 @@ import javax.swing.JPanel;
 public class DrawPanel extends JPanel {
 	private ArrayList<Drawable> shapesList = new ArrayList<Drawable>();
 	private ArrayList<ButtonPanel> bpList = new ArrayList<ButtonPanel>();
+	private int lineWidth;
 
 	/**
 	 * Creates a new DrawPanel
@@ -32,7 +33,7 @@ public class DrawPanel extends JPanel {
 	public void addRectangle(int x1, int y1, Color fill, Color outline) {
 		int x2 = x1;
 		int y2 = y1;
-		shapesList.add(new MyRectangle(x1, y1, x2, y2, fill, outline, 1));
+		shapesList.add(new MyRectangle(x1, y1, x2, y2, fill, outline, this.lineWidth));
 	}
 
 	/**
@@ -50,7 +51,7 @@ public class DrawPanel extends JPanel {
 	public void addEllipse(int x1, int y1, Color fill, Color outline) {
 		int x2 = x1;
 		int y2 = y1;
-		shapesList.add(new MyEllipse(x1, y1, x2, y2, fill, outline, 1));
+		shapesList.add(new MyEllipse(x1, y1, x2, y2, fill, outline, this.lineWidth));
 	}
 
 	/**
@@ -66,7 +67,7 @@ public class DrawPanel extends JPanel {
 	public void addLine(int x1, int y1, Color fill) {
 		int x2 = x1;
 		int y2 = y1;
-		shapesList.add(new MyLine(x1, y1, x2, y2, fill, 1));
+		shapesList.add(new MyLine(x1, y1, x2, y2, fill, this.lineWidth));
 		System.out.println("this is where I draw the line");
 	}
 
@@ -119,11 +120,11 @@ public class DrawPanel extends JPanel {
 					double x2 = coordinates[2];
 					double y2 = coordinates[3];
 					if (shapesList.get(i).shape() == "Ellipse")
-						shapesList.add(new MyEllipse(x1, y1, x2, y2, fill, outline, 1));
+						shapesList.add(new MyEllipse(x1, y1, x2, y2, fill, outline, this.lineWidth));
 					if (shapesList.get(i).shape() == "Rectangle")
-						shapesList.add(new MyRectangle(x1, y1, x2, y2, fill, outline, 1));
+						shapesList.add(new MyRectangle(x1, y1, x2, y2, fill, outline, this.lineWidth));
 					if (shapesList.get(i).shape() == "Line")
-						shapesList.add(new MyLine(x1, y1, x2, y2, fill, 1));
+						shapesList.add(new MyLine(x1, y1, x2, y2, fill, this.lineWidth));
 					shapesList.remove(shapesList.get(i));
 					shapeFound = true;
 				}
@@ -192,5 +193,9 @@ public class DrawPanel extends JPanel {
 
 	public ArrayList<ButtonPanel> getbpList() {
 		return this.bpList;
+	}
+	
+	public void changeLineWidth(int lineWidth){
+		this.lineWidth=lineWidth;
 	}
 }

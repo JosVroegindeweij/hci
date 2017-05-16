@@ -8,7 +8,7 @@ import java.awt.geom.Line2D;
 public class MyLine implements Drawable {
 	private double x1, y1, x2, y2;
 	public String name = "line";
-	private Color fill;
+	private Color fill=Color.WHITE;
 	private int lineWidth;
 
 	public MyLine() {

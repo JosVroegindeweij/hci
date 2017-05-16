@@ -2,7 +2,9 @@ package nl.ru.ai.hci.assigment2;
 
 import java.awt.Color;
 
+import javax.swing.ComboBoxModel;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JPanel;
 
 public class ButtonPanel extends JPanel {
@@ -51,15 +53,26 @@ public class ButtonPanel extends JPanel {
 
 			JButton fill = new JButton("Fill");
 			add(fill);
+			fill.setBackground(Color.WHITE);
 			fill.addActionListener(input);
 			fill.setActionCommand("fill");
 			this.fill = fill;
 
 			JButton outline = new JButton("Outline");
 			add(outline);
+			outline.setBackground(Color.GRAY);
 			outline.addActionListener(input);
 			outline.setActionCommand("outline");
 			this.outline = outline;
+			
+			String[] lineWidths = {"Line width","2","4","6","8","10","12"};
+			JComboBox lineWidth = new JComboBox(lineWidths);
+			add(lineWidth);
+			lineWidth.setSelectedIndex(0);
+			lineWidth.setEditable(true);
+			lineWidth.setVisible(true);
+			lineWidth.addActionListener(input);
+			lineWidth.setActionCommand("lineWidth");
 			break;
 
 		case COLOR:
@@ -124,7 +137,6 @@ public class ButtonPanel extends JPanel {
 			colorWhite.setBackground(Color.WHITE);
 			break;
 		}
-
 	}
 
 	public void changeFillColor(Color fillColor) {

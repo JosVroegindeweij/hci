@@ -7,6 +7,8 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 
+import javax.swing.JComboBox;
+
 public class InputHandler implements ActionListener, MouseListener, MouseMotionListener {
 	private DrawPanel dp;
 	private Mode mode;
@@ -113,6 +115,20 @@ public class InputHandler implements ActionListener, MouseListener, MouseMotionL
 			else if (this.mode == Mode.OUTLINE)
 				dp.getbpList().get(0).changeOutlineColor(Color.WHITE);
 			break;
+		case "lineWidth":
+			JComboBox lineWidth = (JComboBox) e.getSource();
+			int width=2;
+			String widthString = (String) lineWidth.getSelectedItem();
+			if (widthString.equals("Line width"))
+				;
+			else {
+				try {
+					width = Integer.parseInt(widthString);
+				} catch (NumberFormatException f) {
+					
+				}
+				dp.changeLineWidth(width);
+			}
 		}
 	}
 
@@ -129,7 +145,7 @@ public class InputHandler implements ActionListener, MouseListener, MouseMotionL
 		Color outlineColor = dp.getbpList().get(0).getOutline().getBackground();
 		switch (this.mode) {
 		case RECTANGLE:
-			dp.addRectangle(m.getX(), m.getY(), fillColor, outlineColor); 
+			dp.addRectangle(m.getX(), m.getY(), fillColor, outlineColor);
 			break;
 		case ELLIPSE:
 			dp.addEllipse(m.getX(), m.getY(), fillColor, outlineColor);
@@ -141,18 +157,18 @@ public class InputHandler implements ActionListener, MouseListener, MouseMotionL
 			dp.deleteShape(m.getX(), m.getY());
 			break;
 		default:
-			dp.changeShapeColor(m.getX(),m.getY());
+			dp.changeShapeColor(m.getX(), m.getY());
 			break;
-//		case FILL:
-//			dp.changeFill(m.getX(), m.getY());
-//			// dp.getbpList().get(0).changeFillColor(this.fill);
-//			// dp.changeFill(m.getX(), m.getY(), fill, outline);
-//			break;
-//		case OUTLINE:
-//			dp.changeOutline(m.getX(), m.getY());
-//			// dp.getbpList().get(0).changeOutlineColor(this.outline);
-//			// dp.changeOutline(m.getX(), m.getY(), fill, outline);
-//			break;
+		// case FILL:
+		// dp.changeFill(m.getX(), m.getY());
+		// // dp.getbpList().get(0).changeFillColor(this.fill);
+		// // dp.changeFill(m.getX(), m.getY(), fill, outline);
+		// break;
+		// case OUTLINE:
+		// dp.changeOutline(m.getX(), m.getY());
+		// // dp.getbpList().get(0).changeOutlineColor(this.outline);
+		// // dp.changeOutline(m.getX(), m.getY(), fill, outline);
+		// break;
 		}
 	}
 
