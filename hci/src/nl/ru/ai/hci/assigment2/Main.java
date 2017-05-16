@@ -10,7 +10,7 @@ public class Main
 		{
 			public void run() 
 			{
-				new Window();ggggggggggg
+				new Window();ggggggggggggg
 			}
 		});
 
