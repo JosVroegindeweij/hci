@@ -71,6 +71,11 @@ public class DrawPanel extends JPanel {
 		System.out.println("this is where I draw the line");
 	}
 
+	public void resizeShape(int x, int y) {
+		// TODO Auto-generated method stub
+		
+	}	
+	
 	/**
 	 * delete shape(s) that contain the coordinates where you clicked
 	 * 

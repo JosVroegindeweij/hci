@@ -46,6 +46,11 @@ public class ButtonPanel extends JPanel {
 			rec.addActionListener(input);
 			rec.setActionCommand("rec");
 
+			JButton resize = new JButton("Resize");
+			add(resize);
+			resize.addActionListener(input);
+			resize.setActionCommand("resize");
+			
 			JButton del = new JButton("Delete");
 			add(del);
 			del.addActionListener(input);
@@ -64,6 +69,11 @@ public class ButtonPanel extends JPanel {
 			outline.addActionListener(input);
 			outline.setActionCommand("outline");
 			this.outline = outline;
+			
+//			JButton recolor = new JButton ("Recolor");
+//			add(recolor);
+//			recolor.addActionListener(input);
+//			recolor.setActionCommand("recolor");
 			
 			String[] lineWidths = {"Line width","2","4","6","8","10","12"};
 			JComboBox lineWidth = new JComboBox(lineWidths);
