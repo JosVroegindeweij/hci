@@ -58,9 +58,9 @@ public class InputHandler implements ActionListener, MouseListener, MouseMotionL
 		case "outline":
 			this.mode = Mode.OUTLINE;
 			break;
-//		case "recolor":
-//			this.mode = Mode.RECOLOR;
-//			break;
+		// case "recolor":
+		// this.mode = Mode.RECOLOR;
+		// break;
 		case "colorRed":
 			if (this.mode == Mode.FILL)
 				dp.getbpList().get(0).changeFillColor(Color.RED);
@@ -159,28 +159,44 @@ public class InputHandler implements ActionListener, MouseListener, MouseMotionL
 		case LINE:
 			dp.addLine(m.getX(), m.getY(), fillColor);
 			break;
-		case RESIZE:
-			dp.resizeShape(m.getX(), m.getY());
-			break;
+		// case RESIZE:
+		// if (dp.getShapesList().size() > 0) {
+		// boolean shapeFound = false;
+		// int i = dp.getShapesList().size() - 1;
+		// while (!shapeFound && i >= 0) {
+		// if (dp.getShapesList().get(i).contains(m.getX(), m.getY())) {
+		// Drawable shape = dp.getShapesList().get(i);
+		// double[] coordinates = shape.getCoordinates();
+		// double x1 = coordinates[0];
+		// double y1 = coordinates[1];
+		// double x2 = m.getX();
+		// double y2 = m.getY();
+		// shape.setCoordinates(x1, y1, x2, y2);
+		// shapeFound = true;
+		// }
+		// i--;
+		// }
+		// }
+		// break;
 		case DELETE:
 			dp.deleteShape(m.getX(), m.getY());
 			break;
-//		case RECOLOR:
-//			dp.changeShapeColor(m.getX(), m.getY());
-//			break;
+		// case RECOLOR:
+		// dp.changeShapeColor(m.getX(), m.getY());
+		// break;
 		default:
 			dp.changeShapeColor(m.getX(), m.getY());
 			break;
-			// case FILL:
-			// dp.changeFill(m.getX(), m.getY());
-			// // dp.getbpList().get(0).changeFillColor(this.fill);
-			// // dp.changeFill(m.getX(), m.getY(), fill, outline);
-			// break;
-			// case OUTLINE:
-			// dp.changeOutline(m.getX(), m.getY());
-			// // dp.getbpList().get(0).changeOutlineColor(this.outline);
-			// // dp.changeOutline(m.getX(), m.getY(), fill, outline);
-			// break;
+		// case FILL:
+		// dp.changeFill(m.getX(), m.getY());
+		// // dp.getbpList().get(0).changeFillColor(this.fill);
+		// // dp.changeFill(m.getX(), m.getY(), fill, outline);
+		// break;
+		// case OUTLINE:
+		// dp.changeOutline(m.getX(), m.getY());
+		// // dp.getbpList().get(0).changeOutlineColor(this.outline);
+		// // dp.changeOutline(m.getX(), m.getY(), fill, outline);
+		// break;
 		}
 	}
 
@@ -193,13 +209,33 @@ public class InputHandler implements ActionListener, MouseListener, MouseMotionL
 	@Override
 	public void mouseDragged(MouseEvent m) {
 		if (this.mode != Mode.DELETE && this.mode != Mode.FILL && this.mode != Mode.OUTLINE) {
-			Drawable shape = dp.getShapesList().get(dp.getShapesList().size() - 1);
-			double[] coordinates = shape.getCoordinates();
-			double x1 = coordinates[0];
-			double y1 = coordinates[1];
-			double x2 = m.getX();
-			double y2 = m.getY();
-			shape.setCoordinates(x1, y1, x2, y2);
+			if (this.mode == Mode.RESIZE) {
+				if (dp.getShapesList().size() > 0) {
+					boolean shapeFound = false;
+					int i = dp.getShapesList().size() - 1;
+					while (!shapeFound && i >= 0) {
+						shapeFound = true;
+						if (dp.getShapesList().get(i).contains(m.getX(), m.getY())) {
+							Drawable shape = dp.getShapesList().get(i);
+							double[] coordinates = shape.getCoordinates();
+							double x1 = coordinates[0];
+							double y1 = coordinates[1];
+							double x2 = m.getX();
+							double y2 = m.getY();
+							shape.setCoordinates(x1, y1, x2, y2);
+						}
+						i--;
+					}
+				}
+			} else {
+				Drawable shape = dp.getShapesList().get(dp.getShapesList().size() - 1);
+				double[] coordinates = shape.getCoordinates();
+				double x1 = coordinates[0];
+				double y1 = coordinates[1];
+				double x2 = m.getX();
+				double y2 = m.getY();
+				shape.setCoordinates(x1, y1, x2, y2);
+			}
 		}
 	}
 
