@@ -12,7 +12,11 @@ import javax.swing.JComboBox;
 public class InputHandler implements ActionListener, MouseListener, MouseMotionListener {
 	private DrawPanel dp;
 	private Mode mode;
-	// private Color fill, outline;
+	private int layer = -1;
+	private double xDiff = -1;
+	private double yDiff = -1;
+	private boolean resize;
+	private Directions resizeDirection;
 
 	/**
 	 * Makes a new InputHandler
@@ -46,8 +50,8 @@ public class InputHandler implements ActionListener, MouseListener, MouseMotionL
 		case "line":
 			this.mode = Mode.LINE;
 			break;
-		case "resize":
-			this.mode = Mode.RESIZE;
+		case "moveorresize":
+			this.mode = Mode.MOVEORRESIZE;
 			break;
 		case "del":
 			this.mode = Mode.DELETE;
@@ -58,9 +62,6 @@ public class InputHandler implements ActionListener, MouseListener, MouseMotionL
 		case "outline":
 			this.mode = Mode.OUTLINE;
 			break;
-		// case "recolor":
-		// this.mode = Mode.RECOLOR;
-		// break;
 		case "colorRed":
 			if (this.mode == Mode.FILL)
 				dp.getbpList().get(0).changeFillColor(Color.RED);
@@ -159,44 +160,36 @@ public class InputHandler implements ActionListener, MouseListener, MouseMotionL
 		case LINE:
 			dp.addLine(m.getX(), m.getY(), fillColor);
 			break;
-		// case RESIZE:
-		// if (dp.getShapesList().size() > 0) {
-		// boolean shapeFound = false;
-		// int i = dp.getShapesList().size() - 1;
-		// while (!shapeFound && i >= 0) {
-		// if (dp.getShapesList().get(i).contains(m.getX(), m.getY())) {
-		// Drawable shape = dp.getShapesList().get(i);
-		// double[] coordinates = shape.getCoordinates();
-		// double x1 = coordinates[0];
-		// double y1 = coordinates[1];
-		// double x2 = m.getX();
-		// double y2 = m.getY();
-		// shape.setCoordinates(x1, y1, x2, y2);
-		// shapeFound = true;
-		// }
-		// i--;
-		// }
-		// }
-		// break;
 		case DELETE:
 			dp.deleteShape(m.getX(), m.getY());
 			break;
-		// case RECOLOR:
-		// dp.changeShapeColor(m.getX(), m.getY());
-		// break;
+		case MOVEORRESIZE:
+			this.xDiff = -1;
+			this.yDiff = -1;
+			this.resize = false;
+			this.resizeDirection = Directions.NA;
+			if (dp.getShapesList().size() > 0) {
+				boolean shapeFound = false;
+				int i = dp.getShapesList().size() - 1;
+				if (this.layer == -1) {
+					while (!shapeFound && i >= 0) {
+						if (dp.getShapesList().get(i).contains(m.getX(), m.getY())) {
+							shapeFound = true;
+							this.layer = i;
+						}
+						i--;
+					}
+				}
+			}
+			if (this.layer > -1) {
+				if (!dp.getShapesList().get(this.layer).borderContains(m.getX(), m.getY()).equals(Directions.NA))
+					this.resize = true;
+				this.resizeDirection = dp.getShapesList().get(this.layer).borderContains(m.getX(), m.getY());
+			}
+			break;
 		default:
 			dp.changeShapeColor(m.getX(), m.getY());
 			break;
-		// case FILL:
-		// dp.changeFill(m.getX(), m.getY());
-		// // dp.getbpList().get(0).changeFillColor(this.fill);
-		// // dp.changeFill(m.getX(), m.getY(), fill, outline);
-		// break;
-		// case OUTLINE:
-		// dp.changeOutline(m.getX(), m.getY());
-		// // dp.getbpList().get(0).changeOutlineColor(this.outline);
-		// // dp.changeOutline(m.getX(), m.getY(), fill, outline);
-		// break;
 		}
 	}
 
@@ -206,25 +199,26 @@ public class InputHandler implements ActionListener, MouseListener, MouseMotionL
 	 * @param m
 	 *            = a MouseEvent
 	 */
+
 	@Override
 	public void mouseDragged(MouseEvent m) {
 		if (this.mode != Mode.DELETE && this.mode != Mode.FILL && this.mode != Mode.OUTLINE) {
-			if (this.mode == Mode.RESIZE) {
-				if (dp.getShapesList().size() > 0) {
-					boolean shapeFound = false;
-					int i = dp.getShapesList().size() - 1;
-					while (!shapeFound && i >= 0) {
-						shapeFound = true;
-						if (dp.getShapesList().get(i).contains(m.getX(), m.getY())) {
-							Drawable shape = dp.getShapesList().get(i);
-							double[] coordinates = shape.getCoordinates();
-							double x1 = coordinates[0];
-							double y1 = coordinates[1];
-							double x2 = m.getX();
-							double y2 = m.getY();
-							shape.setCoordinates(x1, y1, x2, y2);
+			if (this.mode == Mode.MOVEORRESIZE) {
+				if (this.layer > -1) {
+					Drawable shape = dp.getShapesList().get(this.layer);
+					if (this.resize) {
+						changeCoordinates(m, shape, this.resizeDirection);
+					} else {
+						double[] coordinates = shape.getCoordinates();
+						if (this.xDiff == -1 && this.yDiff == -1) {
+							xDiff = m.getX() - coordinates[0];
+							yDiff = m.getY() - coordinates[1];
 						}
-						i--;
+						double width = coordinates[2] - coordinates[0];
+						double height = coordinates[3] - coordinates[1];
+						double x1 = m.getX() - this.xDiff;
+						double y1 = m.getY() - this.yDiff;
+						shape.setCoordinates(x1, y1, x1 + width, y1 + height);
 					}
 				}
 			} else {
@@ -237,6 +231,44 @@ public class InputHandler implements ActionListener, MouseListener, MouseMotionL
 				shape.setCoordinates(x1, y1, x2, y2);
 			}
 		}
+	}
+
+	private void changeCoordinates(MouseEvent m, Drawable shape, Directions borderContains) {
+		double[] coordinates = shape.getCoordinates();
+		double x1 = coordinates[0];
+		double y1 = coordinates[1];
+		double x2 = coordinates[2];
+		double y2 = coordinates[3];
+		switch (borderContains) {
+		case W:
+			x1 = m.getX();
+			y1 = m.getY();
+			break;
+		case E:
+			x2 = m.getX();
+			y2 = m.getY();
+			break;
+		case NW:
+			x1 = m.getX();
+			y1 = m.getY();
+			break;
+		case NE:
+			y1 = m.getY();
+			x2 = m.getX();
+			break;
+		case SE:
+			x2 = m.getX();
+			y2 = m.getY();
+			break;
+		case SW:
+			x1 = m.getX();
+			y2 = m.getY();
+			break;
+		default:
+			break;
+
+		}
+		shape.setCoordinates(x1, y1, x2, y2);
 	}
 
 	@Override
@@ -257,5 +289,6 @@ public class InputHandler implements ActionListener, MouseListener, MouseMotionL
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
+		this.layer = -1;
 	}
 }

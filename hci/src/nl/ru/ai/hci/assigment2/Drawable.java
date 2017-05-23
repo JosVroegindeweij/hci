@@ -11,8 +11,8 @@ public interface Drawable
 	
 	boolean contains(int x, int y);
 	
-	//public void setColor(Color c);
-	
+	public Directions borderContains(int x, int y);
+		
 	public String shape();
 
 	

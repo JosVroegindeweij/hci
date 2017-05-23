@@ -8,7 +8,7 @@ import java.awt.geom.Line2D;
 public class MyLine implements Drawable {
 	private double x1, y1, x2, y2;
 	public String name = "line";
-	private Color fill=Color.WHITE;
+	private Color fill = Color.WHITE;
 	private int lineWidth;
 
 	public MyLine() {
@@ -140,19 +140,24 @@ public class MyLine implements Drawable {
 	/**
 	 * checks whether a position is fairly close to the line
 	 * 
-	 * @return a boolean whether the point is witin 5 of the line
+	 * @return a boolean whether the point is witin 10 of the line
 	 */
 	@Override
 	public boolean contains(int x, int y) {
 		return Line2D.ptSegDist(getStartX(), getStartY(), getStartX() + getWidth(), getStartY() + getHeight(), x,
-				y) < 5;
+				y) < 10;
 	}
 
-	// @Override
-	// public void setColor(Color c) {
-	// // TODO Auto-generated method stub
-	// }
-	
+	@Override
+	public Directions borderContains(int x, int y) {
+		//Not finished yet, doesn't completely work
+			if (Math.sqrt((getStartX() - x) * (getStartX() - x) + (getStartY() - y) * (getStartY() - y)) < 10)
+				return Directions.W;
+			else if (Math.sqrt((getStartX()+getWidth() - x) * (getStartX()+getWidth() - x) + (getStartY()+getHeight() - y) * (getStartY()+getHeight() - y)) < 10)
+				return Directions.E;
+		return Directions.NA;
+	}
+
 	/**
 	 * returns the string "Line"
 	 * 

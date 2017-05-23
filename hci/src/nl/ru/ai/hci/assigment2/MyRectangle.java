@@ -3,12 +3,13 @@ package nl.ru.ai.hci.assigment2;
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics2D;
+import java.awt.geom.Line2D;
 import java.awt.geom.Rectangle2D;
 
 public class MyRectangle implements Drawable {
 	private double x1, y1, x2, y2;
 	public String name = "rectangle";
-	private Color fill=Color.WHITE, outline=Color.GRAY;
+	private Color fill = Color.WHITE, outline = Color.GRAY;
 	private int lineWidth;
 
 	public MyRectangle() {
@@ -130,6 +131,7 @@ public class MyRectangle implements Drawable {
 
 	/**
 	 * gets the current coordinates of the rectangle and returns it in an array
+	 * 
 	 * @return array with coordinates
 	 * 
 	 */
@@ -141,6 +143,7 @@ public class MyRectangle implements Drawable {
 
 	/**
 	 * checks whether a position is within the rectangle
+	 * 
 	 * @return a boolean whether the rectangle contains these coordinates
 	 */
 	@Override
@@ -148,8 +151,27 @@ public class MyRectangle implements Drawable {
 		return (x > Math.min(x1, x2) && x < Math.max(x1, x2) && y > Math.min(y1, y2) && y < Math.max(y1, y2));
 	}
 
+	@Override
+	public Directions borderContains(int x, int y) {
+		if (Line2D.ptSegDist(x1, y1, x1 + (getWidth() / 2), y1, x, y) < 10
+				|| Line2D.ptSegDist(x1, y1, x1, y1 + (getHeight() / 2), x, y) < 10)
+			return Directions.NW;
+		else if (Line2D.ptSegDist(x1 + (getWidth() / 2), y1, x2, y1, x, y) < 10
+				|| Line2D.ptSegDist(x2, y1, x2, y1 + (getHeight() / 2), x, y) < 10)
+			return Directions.NE;
+		else if (Line2D.ptSegDist(x2, y1 + (getHeight() / 2), x2, y2, x, y) < 10
+				|| Line2D.ptSegDist(x1 + (getWidth() / 2), y2, x2, y2, x, y) < 10)
+			return Directions.SE;
+		else if (Line2D.ptSegDist(x1, y1 + (getHeight() / 2), x1, y2, x, y) < 10
+				|| Line2D.ptSegDist(x1, y2, x1 + (getWidth() / 2), y2, x, y) < 10)
+			return Directions.SW;
+
+		return Directions.NA;
+	}
+
 	/**
 	 * returns the string "Rectangle"
+	 * 
 	 * @return "Rectangle"
 	 */
 	@Override

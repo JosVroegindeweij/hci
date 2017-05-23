@@ -1,6 +1,7 @@
 package nl.ru.ai.hci.assigment2;
 
 import java.awt.Color;
+import java.awt.Dimension;
 
 import javax.swing.ComboBoxModel;
 import javax.swing.JButton;
@@ -46,10 +47,10 @@ public class ButtonPanel extends JPanel {
 			rec.addActionListener(input);
 			rec.setActionCommand("rec");
 
-			JButton resize = new JButton("Resize");
-			add(resize);
-			resize.addActionListener(input);
-			resize.setActionCommand("resize");
+			JButton moveorresize = new JButton("Move/Resize");
+			add(moveorresize);
+			moveorresize.addActionListener(input);
+			moveorresize.setActionCommand("moveorresize");
 			
 			JButton del = new JButton("Delete");
 			add(del);
@@ -88,60 +89,70 @@ public class ButtonPanel extends JPanel {
 		case COLOR:
 			JButton colorRed = new JButton("");
 			add(colorRed);
+			colorRed.setPreferredSize(new Dimension(40, 40));
 			colorRed.addActionListener(input);
 			colorRed.setActionCommand("colorRed");
 			colorRed.setBackground(Color.RED);
 
 			JButton colorMagenta = new JButton("");
 			add(colorMagenta);
+			colorMagenta.setPreferredSize(new Dimension(40, 40));
 			colorMagenta.addActionListener(input);
 			colorMagenta.setActionCommand("colorMagenta");
 			colorMagenta.setBackground(Color.MAGENTA);
 
 			JButton colorPink = new JButton("");
 			add(colorPink);
+			colorPink.setPreferredSize(new Dimension(40, 40));
 			colorPink.addActionListener(input);
 			colorPink.setActionCommand("colorPink");
 			colorPink.setBackground(Color.PINK);
 
 			JButton colorOrange = new JButton("");
 			add(colorOrange);
+			colorOrange.setPreferredSize(new Dimension(40, 40));
 			colorOrange.addActionListener(input);
 			colorOrange.setActionCommand("colorOrange");
 			colorOrange.setBackground(Color.ORANGE);
 
 			JButton colorYellow = new JButton("");
 			add(colorYellow);
+			colorYellow.setPreferredSize(new Dimension(40, 40));
 			colorYellow.addActionListener(input);
 			colorYellow.setActionCommand("colorYellow");
 			colorYellow.setBackground(Color.YELLOW);
 
 			JButton colorGreen = new JButton("");
 			add(colorGreen);
+			colorGreen.setPreferredSize(new Dimension(40, 40));
 			colorGreen.addActionListener(input);
 			colorGreen.setActionCommand("colorGreen");
 			colorGreen.setBackground(Color.GREEN);
 
 			JButton colorBlue = new JButton("");
 			add(colorBlue);
+			colorBlue.setPreferredSize(new Dimension(40, 40));
 			colorBlue.addActionListener(input);
 			colorBlue.setActionCommand("colorBlue");
 			colorBlue.setBackground(Color.BLUE);
 
 			JButton colorBlack = new JButton("");
 			add(colorBlack);
+			colorBlack.setPreferredSize(new Dimension(40, 40));
 			colorBlack.addActionListener(input);
 			colorBlack.setActionCommand("colorBlack");
 			colorBlack.setBackground(Color.BLACK);
 
 			JButton colorGray = new JButton("");
 			add(colorGray);
+			colorGray.setPreferredSize(new Dimension(40, 40));
 			colorGray.addActionListener(input);
 			colorGray.setActionCommand("colorGray");
 			colorGray.setBackground(Color.DARK_GRAY);
 
 			JButton colorWhite = new JButton("");
 			add(colorWhite);
+			colorWhite.setPreferredSize(new Dimension(40, 40));
 			colorWhite.addActionListener(input);
 			colorWhite.setActionCommand("colorWhite");
 			colorWhite.setBackground(Color.WHITE);

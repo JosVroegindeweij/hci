@@ -68,7 +68,6 @@ public class DrawPanel extends JPanel {
 		int x2 = x1;
 		int y2 = y1;
 		shapesList.add(new MyLine(x1, y1, x2, y2, fill, this.lineWidth));
-		System.out.println("this is where I draw the line");
 	}
 
 	public void resizeShape(int xClick, int yClick) {
