@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 
 import javax.swing.ComboBoxModel;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JPanel;
@@ -27,38 +28,41 @@ public class ButtonPanel extends JPanel {
 		super();
 		switch (type) {
 		case SHAPES:
-			// Makes a new button called ell with text "Ellipse"
-			JButton ell = new JButton("Ellipse");
-			// Adds the button to the window
+			ImageIcon ellipse = new ImageIcon("C:/Users/josvr/Documents/GitHub/hci/hci/src/ellipse.png");
+			JButton ell = new JButton(ellipse);
+			ell.setPreferredSize(new Dimension(100,100));
 			add(ell);
-			// InputHandler used when the button is clicked
 			ell.addActionListener(input);
-			// For the InputHandler, this name distinguishes the button from
-			// other buttons
 			ell.setActionCommand("ell");
 
 			JButton line = new JButton("Line");
+			line.setPreferredSize(new Dimension(100,100));
 			add(line);
 			line.addActionListener(input);
 			line.setActionCommand("line");
 
-			JButton rec = new JButton("Rectangle");
+			ImageIcon rectangle = new ImageIcon("C:/Users/josvr/Documents/GitHub/hci/hci/src/rectangle.png");
+			JButton rec = new JButton(rectangle);
+			rec.setPreferredSize(new Dimension(100,100));
 			add(rec);
 			rec.addActionListener(input);
 			rec.setActionCommand("rec");
 
-			JButton moveorresize = new JButton("Move/Resize");
-			add(moveorresize);
-			moveorresize.addActionListener(input);
-			moveorresize.setActionCommand("moveorresize");
-			
+			JButton select = new JButton("Select");
+			select.setPreferredSize(new Dimension(100,100));
+			add(select);
+			select.addActionListener(input);
+			select.setActionCommand("select");
+
 			JButton del = new JButton("Delete");
+			del.setPreferredSize(new Dimension(100,100));
 			add(del);
 			del.addActionListener(input);
 			del.setActionCommand("del");
 
 			JButton fill = new JButton("Fill");
 			add(fill);
+			fill.setPreferredSize(new Dimension(100,100));
 			fill.setBackground(Color.WHITE);
 			fill.addActionListener(input);
 			fill.setActionCommand("fill");
@@ -66,19 +70,36 @@ public class ButtonPanel extends JPanel {
 
 			JButton outline = new JButton("Outline");
 			add(outline);
+			outline.setPreferredSize(new Dimension(100,100));
 			outline.setBackground(Color.GRAY);
 			outline.addActionListener(input);
 			outline.setActionCommand("outline");
 			this.outline = outline;
+
+//			String[] fillColors = { "Select Fill Color", "fill", "fill", "fill", "fill", "fill", "fill", "fill", "fill", "fill" };
+//			JComboBox fillColor = new JComboBox(fillColors);
+//			fillColor.setMaximumRowCount(5);
+//			fillColor.setRenderer(new BoxCellRenderer());
+//			add(fillColor);
+//			fillColor.setSelectedIndex(0);
+//			fillColor.setVisible(true);
+//			fillColor.addActionListener(input);
+//			fillColor.setActionCommand("fillColor");
+//
+//			String[] outlineColors = { "Select Outline Color", "outline", "outline", "outline", "outline", "outline", "outline", "outline", "outline", "outline" };
+//			JComboBox outlineColor = new JComboBox(outlineColors);
+//			outlineColor.setMaximumRowCount(5);
+//			outlineColor.setRenderer(new BoxCellRenderer());
+//			add(outlineColor);
+//			outlineColor.setSelectedIndex(0);
+//			outlineColor.setVisible(true);
+//			outlineColor.addActionListener(input);
+//			outlineColor.setActionCommand("outlineColor");
 			
-//			JButton recolor = new JButton ("Recolor");
-//			add(recolor);
-//			recolor.addActionListener(input);
-//			recolor.setActionCommand("recolor");
-			
-			String[] lineWidths = {"Line width","2","4","6","8","10","12"};
+			String[] lineWidths = { "Line width", "2", "4", "6", "8", "10", "12" };
 			JComboBox lineWidth = new JComboBox(lineWidths);
 			add(lineWidth);
+			lineWidth.setPreferredSize(new Dimension(200,100));
 			lineWidth.setSelectedIndex(0);
 			lineWidth.setEditable(true);
 			lineWidth.setVisible(true);
@@ -167,12 +188,17 @@ public class ButtonPanel extends JPanel {
 	public void changeOutlineColor(Color outlineColor) {
 		this.outline.setBackground(outlineColor);
 	}
-	
-	public JButton getFill(){
+
+	public JButton getFill() {
 		return this.fill;
 	}
-	
-	public JButton getOutline(){
+
+	public JButton getOutline() {
 		return this.outline;
+	}
+
+	@Override
+	public void setBackground(Color bg) {
+		super.setBackground(bg);
 	}
 }

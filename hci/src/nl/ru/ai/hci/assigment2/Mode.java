@@ -6,5 +6,5 @@ public enum Mode {
 	// Rectangle, line and ellipse are for creating the corresponding shapes.
 	// Delete deletes an object. Fill colors the inside of a shape, outline
 	// colors the edge.
-	RECTANGLE, LINE, ELLIPSE, MOVEORRESIZE, DELETE, FILL, OUTLINE
+	RECTANGLE, LINE, ELLIPSE, SELECT, DELETE, FILL, OUTLINE
 }

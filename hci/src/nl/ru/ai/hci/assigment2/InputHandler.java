@@ -50,8 +50,8 @@ public class InputHandler implements ActionListener, MouseListener, MouseMotionL
 		case "line":
 			this.mode = Mode.LINE;
 			break;
-		case "moveorresize":
-			this.mode = Mode.MOVEORRESIZE;
+		case "select":
+			this.mode = Mode.SELECT;
 			break;
 		case "del":
 			this.mode = Mode.DELETE;
@@ -163,7 +163,7 @@ public class InputHandler implements ActionListener, MouseListener, MouseMotionL
 		case DELETE:
 			dp.deleteShape(m.getX(), m.getY());
 			break;
-		case MOVEORRESIZE:
+		case SELECT:
 			this.xDiff = -1;
 			this.yDiff = -1;
 			this.resize = false;
@@ -203,7 +203,7 @@ public class InputHandler implements ActionListener, MouseListener, MouseMotionL
 	@Override
 	public void mouseDragged(MouseEvent m) {
 		if (this.mode != Mode.DELETE && this.mode != Mode.FILL && this.mode != Mode.OUTLINE) {
-			if (this.mode == Mode.MOVEORRESIZE) {
+			if (this.mode == Mode.SELECT) {
 				if (this.layer > -1) {
 					Drawable shape = dp.getShapesList().get(this.layer);
 					if (this.resize) {
