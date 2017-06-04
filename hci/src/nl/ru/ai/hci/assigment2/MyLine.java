@@ -168,4 +168,16 @@ public class MyLine implements Drawable {
 		return "Line";
 	}
 
+	@Override
+	public String getText() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int getFontSize() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }

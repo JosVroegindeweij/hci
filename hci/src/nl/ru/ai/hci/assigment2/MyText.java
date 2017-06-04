@@ -2,21 +2,25 @@ package nl.ru.ai.hci.assigment2;
 
 import java.awt.BasicStroke;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.geom.Line2D;
-import java.awt.geom.Rectangle2D;
 
-public class MyRectangle implements Drawable {
+public class MyText implements Drawable {
+	private double width;
+	private double height;
 	private double x1, y1, x2, y2;
-	public String name = "rectangle";
-	private Color fill = Color.WHITE, outline = Color.GRAY;
-	private int lineWidth;
+	public String name = "Text";
+	private String text;
+	private Color color = Color.BLACK;
+	private int fontSize;
 
-	public MyRectangle() {
+
+	public MyText() {
 	}
 
 	/**
-	 * Creates a new rectangle
+	 * Creates a new Text
 	 * 
 	 * @param x1
 	 *            = the x1 coordinate
@@ -27,64 +31,56 @@ public class MyRectangle implements Drawable {
 	 * @param y2
 	 *            = the y2 coordinate
 	 * @param color
-	 *            = the color of the rectangle
+	 *            = the color of the Text
 	 */
-	public MyRectangle(double x1, double y1, double x2, double y2, Color fill, Color outline, int lineWidth) {
+	public MyText(String text, double x1, double y2, Color color, int fontSize) {
 		this.x1 = x1;
-		this.y1 = y1;
-		this.x2 = x2;
 		this.y2 = y2;
-		this.fill = fill;
-		this.outline = outline;
-		this.lineWidth = lineWidth;
+		this.text = text;
+		this.color = color;
+		this.fontSize = fontSize;
 	}
 
 	/**
-	 * Draws the rectangle
+	 * Draws the Text
 	 * 
 	 * @param g
-	 *            = the rectangle
+	 *            = the Text
 	 */
 	@Override
 	public void draw(Graphics2D g) {
-		// Gets the values needed to specify the position and the size of the
-		// rectangle
-		double x = getStartX();
-		double y = getStartY();
-		double width = getWidth();
-		double height = getHeight();
-		// Creates a rectangle with these values
-		Rectangle2D r = new Rectangle2D.Double(x, y, width, height);
-		// Sets the color of the rectangle
-		g.setStroke(new BasicStroke(lineWidth));
-		g.setColor(outline);
-		// Draws the rectangle
-		g.draw(r);
-		g.setColor(fill);
-		// Set the fill color
-		g.fill(r);
+		int x = (int)this.x1;
+		int y = (int)this.y2;
+		g.setColor(color);
+		g.setFont(new Font("TimesRoman", Font.PLAIN, fontSize)); 
+		g.drawString(this.text, x, y);
+		width = g.getFontMetrics().stringWidth(text);
+		height = g.getFontMetrics().getHeight();
+		x2 = x1 + width;
+		y1 = y2 - height;
+		//g.drawRect(x, (int) y1, (int)width, (int)height);
 	}
 
 	/**
-	 * gets the width of the rectangle
+	 * gets the width of the Text
 	 * 
-	 * @return width of rectangle
+	 * @return width of Text
 	 */
 	private double getWidth() {
-		return Math.abs(x1 - x2);
+		return width;
 	}
 
 	/**
-	 * gets the height of the rectangle
+	 * gets the height of the Text
 	 * 
-	 * @return height of rectangle
+	 * @return height of Text
 	 */
 	private double getHeight() {
-		return Math.abs(y1 - y2);
+		return height;
 	}
 
 	/**
-	 * gets the x-coordinate of the topleft corner of the rectangle. This is the
+	 * gets the x-coordinate of the topleft corner of the Text. This is the
 	 * smallest x
 	 * 
 	 * @return smallest x-coordinate
@@ -94,7 +90,7 @@ public class MyRectangle implements Drawable {
 	}
 
 	/**
-	 * gets the y-coordinate of the topleft corner of the rectangle. This is the
+	 * gets the y-coordinate of the topleft corner of the Text. This is the
 	 * smallest y
 	 * 
 	 * @return smallest y-coordinate
@@ -104,7 +100,7 @@ public class MyRectangle implements Drawable {
 	}
 
 	/**
-	 * sets the coordinates of the rectangle (used for resizing)
+	 * sets the coordinates of the Text (used for resizing)
 	 * 
 	 * @param x1
 	 *            = new x1 coordinate
@@ -116,11 +112,12 @@ public class MyRectangle implements Drawable {
 	 *            = new y2 coordinate
 	 */
 	@Override
-	public void setCoordinates(double x1, double y1, double x2, double y2) {
+	public void setCoordinates(double x1, double y2, double x2, double y1) {
 		this.x1 = x1;
 		this.y1 = y1;
 		this.x2 = x2;
 		this.y2 = y2;
+		
 	}
 
 	// @Override
@@ -130,24 +127,26 @@ public class MyRectangle implements Drawable {
 	// }
 
 	/**
-	 * gets the current coordinates of the rectangle and returns it in an array
+	 * gets the current coordinates of the Text and returns it in an array
 	 * 
 	 * @return array with coordinates
 	 * 
 	 */
 	@Override
 	public double[] getCoordinates() {
-		double[] coordinates = { x1, y1, x2, y2 };
+		double[] coordinates = { x1, y2, x2, y1 };
 		return coordinates;
 	}
 
 	/**
-	 * checks whether a position is within the rectangle
+	 * checks whether a position is within the Text
 	 * 
-	 * @return a boolean whether the rectangle contains these coordinates
+	 * @return a boolean whether the Text contains these coordinates
 	 */
 	@Override
 	public boolean contains(int x, int y) {
+		//Sysout.println("x1="+this.x1+" x2="+ this.x2 + " y1=" + this.y1 + " y2=" + this.y2);
+		System.out.println(x > Math.min(x1, x2) && x < Math.max(x1, x2) && y > Math.min(y1, y2) && y < Math.max(y1, y2));
 		return (x > Math.min(x1, x2) && x < Math.max(x1, x2) && y > Math.min(y1, y2) && y < Math.max(y1, y2));
 	}
 
@@ -170,24 +169,24 @@ public class MyRectangle implements Drawable {
 	}
 
 	/**
-	 * returns the string "Rectangle"
+	 * returns the string "Text"
 	 * 
-	 * @return "Rectangle"
+	 * @return "Text"
 	 */
 	@Override
 	public String shape() {
-		return "Rectangle";
+		return "Text";
 	}
-
+	
 	@Override
-	public String getText() {
-		// TODO Auto-generated method stub
-		return null;
+	public String getText()
+	{
+		return this.text;
 	}
-
+	
 	@Override
-	public int getFontSize() {
-		// TODO Auto-generated method stub
-		return 0;
+	public int getFontSize()
+	{
+		return this.fontSize;
 	}
 }

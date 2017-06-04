@@ -14,7 +14,10 @@ public interface Drawable
 	public Directions borderContains(int x, int y);
 		
 	public String shape();
-
+	
+	public String getText();
+	
+	public int getFontSize();
 	
 }
 

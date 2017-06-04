@@ -1,5 +1,6 @@
 package nl.ru.ai.hci.assigment2;
 
+import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.geom.Ellipse2D;
@@ -35,7 +36,9 @@ public class MyEllipse implements Drawable {
 		this.y2 = y2;
 		this.fill = fill;
 		this.outline = outline;
+		System.out.println("linewidth2="+lineWidth);
 		this.lineWidth = lineWidth;
+		
 	}
 
 	/**
@@ -54,6 +57,7 @@ public class MyEllipse implements Drawable {
 		double height = getHeight();
 		// Creates a ellipse with these values
 		Ellipse2D e = new Ellipse2D.Double(x, y, width, height);
+		g.setStroke(new BasicStroke(lineWidth));
 		// Sets color of the edge of the ellipse
 		g.setColor(outline);
 		// Draws the ellipse
@@ -164,5 +168,17 @@ public class MyEllipse implements Drawable {
 	@Override
 	public String shape() {
 		return "Ellipse";
+	}
+
+	@Override
+	public String getText() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int getFontSize() {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 }

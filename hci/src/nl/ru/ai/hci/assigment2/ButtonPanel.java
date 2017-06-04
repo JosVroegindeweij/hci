@@ -28,8 +28,7 @@ public class ButtonPanel extends JPanel {
 		super();
 		switch (type) {
 		case SHAPES:
-			ImageIcon ellipse = new ImageIcon("C:/Users/josvr/Documents/GitHub/hci/hci/src/ellipse.png");
-			JButton ell = new JButton(ellipse);
+			JButton ell = new JButton("ellipse");
 			ell.setPreferredSize(new Dimension(100,100));
 			add(ell);
 			ell.addActionListener(input);
@@ -41,8 +40,7 @@ public class ButtonPanel extends JPanel {
 			line.addActionListener(input);
 			line.setActionCommand("line");
 
-			ImageIcon rectangle = new ImageIcon("C:/Users/josvr/Documents/GitHub/hci/hci/src/rectangle.png");
-			JButton rec = new JButton(rectangle);
+			JButton rec = new JButton("Rectangle");
 			rec.setPreferredSize(new Dimension(100,100));
 			add(rec);
 			rec.addActionListener(input);
@@ -76,6 +74,17 @@ public class ButtonPanel extends JPanel {
 			outline.setActionCommand("outline");
 			this.outline = outline;
 
+			JButton image = new JButton("Image");
+			image.setPreferredSize(new Dimension(100,100));
+			add(image);
+			image.addActionListener(input);
+			image.setActionCommand("image");
+			
+			JButton text = new JButton("Text");
+			text.setPreferredSize(new Dimension(100,100));
+			add(text);
+			text.addActionListener(input);
+			text.setActionCommand("text");
 //			String[] fillColors = { "Select Fill Color", "fill", "fill", "fill", "fill", "fill", "fill", "fill", "fill", "fill" };
 //			JComboBox fillColor = new JComboBox(fillColors);
 //			fillColor.setMaximumRowCount(5);
@@ -95,6 +104,15 @@ public class ButtonPanel extends JPanel {
 //			outlineColor.setVisible(true);
 //			outlineColor.addActionListener(input);
 //			outlineColor.setActionCommand("outlineColor");
+			String[] fontSizes = { "Font size", "12", "14", "20", "24", "48", "72" };
+			JComboBox fontSize = new JComboBox(fontSizes);
+			add(fontSize);
+			fontSize.setPreferredSize(new Dimension(200,100));
+			fontSize.setSelectedIndex(0);
+			fontSize.setEditable(true);
+			fontSize.setVisible(true);
+			fontSize.addActionListener(input);
+			fontSize.setActionCommand("fontSize");
 			
 			String[] lineWidths = { "Line width", "2", "4", "6", "8", "10", "12" };
 			JComboBox lineWidth = new JComboBox(lineWidths);
