@@ -35,7 +35,7 @@ public class Window extends JFrame
 		getContentPane().add(dp, BorderLayout.CENTER);
 		// Places the ButtonPanel in the correct place of the window
 		getContentPane().add(bp, BorderLayout.NORTH);
-		getContentPane().add(bp2, BorderLayout.LINE_END);
+		getContentPane().add(bp2, BorderLayout.SOUTH);
 		// Set the window to visible ! Yup ... This is necessary
 		setVisible(true);
 	}

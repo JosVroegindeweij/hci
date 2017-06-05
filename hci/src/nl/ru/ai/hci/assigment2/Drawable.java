@@ -20,5 +20,3 @@ public interface Drawable
 	public int getFontSize();
 	
 }
-
-

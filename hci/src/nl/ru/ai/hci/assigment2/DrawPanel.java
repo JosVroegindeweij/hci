@@ -9,6 +9,7 @@ import javax.swing.JPanel;
 
 public class DrawPanel extends JPanel {
 	private ArrayList<Drawable> shapesList = new ArrayList<Drawable>();
+	private ArrayList<MyEllipse> resizeShapes = new ArrayList<MyEllipse>();
 	private ArrayList<ButtonPanel> bpList = new ArrayList<ButtonPanel>();
 	private int lineWidth;
 	private int fontSize = 20;
@@ -36,7 +37,7 @@ public class DrawPanel extends JPanel {
 	public void addRectangle(int x1, int y1, Color fill, Color outline) {
 		int x2 = x1;
 		int y2 = y1;
-		shapesList.add(new MyRectangle(x1, y1, x2, y2, fill, outline, this.lineWidth));
+		this.shapesList.add(new MyRectangle(x1, y1, x2, y2, fill, outline, this.lineWidth));
 	}
 
 	/**
@@ -55,7 +56,11 @@ public class DrawPanel extends JPanel {
 		int x2 = x1;
 		int y2 = y1;
 		System.out.println("linewidth="+lineWidth);
-		shapesList.add(new MyEllipse(x1, y1, x2, y2, fill, outline, this.lineWidth));
+		this.shapesList.add(new MyEllipse(x1, y1, x2, y2, fill, outline, this.lineWidth));
+	}
+	
+	public void addResizeEllipse(int x1, int y1, int x2, int y2){
+		this.resizeShapes.add(new MyEllipse(x1,y1,x2,y2,Color.GRAY, Color.BLACK, 1));
 	}
 
 	/**
@@ -71,17 +76,17 @@ public class DrawPanel extends JPanel {
 	public void addLine(int x1, int y1, Color fill) {
 		int x2 = x1;
 		int y2 = y1;
-		shapesList.add(new MyLine(x1, y1, x2, y2, fill, this.lineWidth));
+		this.shapesList.add(new MyLine(x1, y1, x2, y2, fill, this.lineWidth));
 	}
 
 	public void addImage(BufferedImage img, int x1, int y1) {
 		int x2 = x1;
 		int y2 = y1;
-		shapesList.add(new MyImage(img, x1, y1, x2, y2));
+		this.shapesList.add(new MyImage(img, x1, y1, x2, y2));
 	}
 	
 	public void addText(String text, int x1, int y2, Color fill) {
-		shapesList.add(new MyText(text, x1, y2, fill, this.fontSize));
+		this.shapesList.add(new MyText(text, x1, y2, fill, this.fontSize));
 		System.out.println("ïn the goddam shapeslist");
 	}
 	
@@ -226,6 +231,3 @@ public class DrawPanel extends JPanel {
 	
 
 }
-
-
-

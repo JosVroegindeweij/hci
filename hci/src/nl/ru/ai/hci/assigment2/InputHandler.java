@@ -20,16 +20,15 @@ import javax.swing.JTextArea;
 
 public class InputHandler implements ActionListener, MouseListener, MouseMotionListener {
 	private DrawPanel dp;
-	private Mode mode;
+	private Mode mode = Mode.SELECT;
 	private int layer = -1;
 	private double xDiff = -1;
 	private double yDiff = -1;
 	private boolean resize;
 	private Directions resizeDirection;
 	private BufferedImage img;
-    JLabel image;
-    private String text;
-
+	JLabel image;
+	private String text;
 
 	/**
 	 * Makes a new InputHandler
@@ -78,32 +77,24 @@ public class InputHandler implements ActionListener, MouseListener, MouseMotionL
 		case "text":
 			this.mode = Mode.TEXT;
 			System.out.println("textttt");
-			text = JOptionPane.showInputDialog("What text do you want to display?");
+			this.text = JOptionPane.showInputDialog("What text do you want to display?");
 			break;
 		case "image":
-			this.mode=Mode.IMAGE;
-//			try {
-//				JFileChooser fc = new JFileChooser();
-//				File file = fc.getSelectedFile();
-//				img = ImageIO.read(file);
-//				ImageIcon icon = new ImageIcon(img);
-//				JLabel label = new JLabel(icon);
-//				
-//			} catch (IOException e1) {
-//				// TODO Auto-generated catch block
-//				e1.printStackTrace();
-//			}
+			this.mode = Mode.IMAGE;
 			JFileChooser fc = new JFileChooser();
-            int result = fc.showOpenDialog(null);
-            if (result == JFileChooser.APPROVE_OPTION) {
-                File file = fc.getSelectedFile();
-                try {
-                	img = ImageIO.read(file);
-                } catch (IOException e1) {
-                    e1.printStackTrace();
-                }
-            }
-            break;
+			int result = fc.showOpenDialog(null);
+			if (result == JFileChooser.APPROVE_OPTION) {
+				File file = fc.getSelectedFile();
+				try {
+					this.img = ImageIO.read(file);
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				}
+			}
+			break;
+			
+			
+			
 		case "colorRed":
 			if (this.mode == Mode.FILL)
 				dp.getbpList().get(0).changeFillColor(Color.RED);
@@ -180,7 +171,7 @@ public class InputHandler implements ActionListener, MouseListener, MouseMotionL
 			}
 			break;
 		case "fontSize":
-			
+
 			JComboBox fontSize = (JComboBox) e.getSource();
 			int size = 20;
 			String sizeString = (String) fontSize.getSelectedItem();
@@ -206,7 +197,7 @@ public class InputHandler implements ActionListener, MouseListener, MouseMotionL
 	 */
 	@Override
 	public void mousePressed(MouseEvent m) {
-		System.out.println("x="+m.getX() + "y="+m.getY());
+		System.out.println("x=" + m.getX() + "y=" + m.getY());
 		System.out.println("MousePressed");
 		Color fillColor = dp.getbpList().get(0).getFill().getBackground();
 		Color outlineColor = dp.getbpList().get(0).getOutline().getBackground();
@@ -220,14 +211,14 @@ public class InputHandler implements ActionListener, MouseListener, MouseMotionL
 		case LINE:
 			dp.addLine(m.getX(), m.getY(), fillColor);
 			break;
-		case DELETE:
-			dp.deleteShape(m.getX(), m.getY());
-			break;
 		case IMAGE:
 			dp.addImage(img, m.getX(), m.getY());
 			break;
 		case TEXT:
 			dp.addText(text, m.getX(), m.getY(), fillColor);
+			break;
+		case DELETE:
+			dp.deleteShape(m.getX(), m.getY());
 			break;
 		case SELECT:
 			this.xDiff = -1;
@@ -248,9 +239,12 @@ public class InputHandler implements ActionListener, MouseListener, MouseMotionL
 				}
 			}
 			if (this.layer > -1) {
-				if (!dp.getShapesList().get(this.layer).borderContains(m.getX(), m.getY()).equals(Directions.NA))
-					;//this.resize = true;
 				this.resizeDirection = dp.getShapesList().get(this.layer).borderContains(m.getX(), m.getY());
+				if (!resizeDirection.equals(Directions.NA)&& !(this.mode==Mode.TEXT))
+					this.resize = true;
+				else {
+					if (dp.getShapesList().get(dp.getShapesList().size()-1).equals())
+				}
 			}
 			break;
 		default:
@@ -290,8 +284,7 @@ public class InputHandler implements ActionListener, MouseListener, MouseMotionL
 						shape.setCoordinates(x1, y1, x1 + width, y1 + height);
 					}
 				}
-			} 
-			else if(this.mode != Mode.TEXT){
+			} else if (this.mode != Mode.TEXT) {
 				Drawable shape = dp.getShapesList().get(dp.getShapesList().size() - 1);
 				double[] coordinates = shape.getCoordinates();
 				double x1 = coordinates[0];
@@ -299,7 +292,7 @@ public class InputHandler implements ActionListener, MouseListener, MouseMotionL
 				double x2 = m.getX();
 				double y2 = m.getY();
 				shape.setCoordinates(x1, y1, x2, y2);
-				//System.out.println("WERE AT THE GETCOORDINATES STATE2");
+				// System.out.println("WERE AT THE GETCOORDINATES STATE2");
 
 			}
 		}
