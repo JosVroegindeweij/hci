@@ -92,68 +92,164 @@ public class InputHandler implements ActionListener, MouseListener, MouseMotionL
 				}
 			}
 			break;
-			
-			
-			
+
 		case "colorRed":
-			if (this.mode == Mode.FILL)
-				dp.getbpList().get(0).changeFillColor(Color.RED);
-			else if (this.mode == Mode.OUTLINE)
-				dp.getbpList().get(0).changeOutlineColor(Color.RED);
+			try {
+				BufferedImage outlineRed = ImageIO
+						.read(new File("C:/Users/josvr/Documents/GitHub/hci/hci/src/outlineRed.png"));
+				BufferedImage fillRed = ImageIO
+						.read(new File("C:/Users/josvr/Documents/GitHub/hci/hci/src/fillRed.png"));
+				if (this.mode == Mode.FILL) {
+					dp.getbpList().get(0).changeFillColor(new Color(190, 22, 34), fillRed);
+				} else if (this.mode == Mode.OUTLINE) {
+					dp.getbpList().get(0).changeOutlineColor(new Color(190, 22, 34), outlineRed);
+				}
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			}
 			break;
 		case "colorMagenta":
-			if (this.mode == Mode.FILL)
-				dp.getbpList().get(0).changeFillColor(Color.MAGENTA);
-			else if (this.mode == Mode.OUTLINE)
-				dp.getbpList().get(0).changeOutlineColor(Color.MAGENTA);
+			try {
+				BufferedImage outlineMagenta = ImageIO
+						.read(new File("C:/Users/josvr/Documents/GitHub/hci/hci/src/outlineMagenta.png"));
+				BufferedImage fillMagenta = ImageIO
+						.read(new File("C:/Users/josvr/Documents/GitHub/hci/hci/src/fillMagenta.png"));
+				if (this.mode == Mode.FILL) {
+					dp.getbpList().get(0).changeFillColor(new Color(102, 36, 131), fillMagenta);
+				} else if (this.mode == Mode.OUTLINE) {
+					dp.getbpList().get(0).changeOutlineColor(new Color(102, 36, 131), outlineMagenta);
+				}
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			}
 			break;
 		case "colorPink":
-			if (this.mode == Mode.FILL)
-				dp.getbpList().get(0).changeFillColor(Color.PINK);
-			else if (this.mode == Mode.OUTLINE)
-				dp.getbpList().get(0).changeOutlineColor(Color.PINK);
+			try {
+				BufferedImage outlinePink = ImageIO
+						.read(new File("C:/Users/josvr/Documents/GitHub/hci/hci/src/outlinePink.png"));
+				BufferedImage fillPink = ImageIO
+						.read(new File("C:/Users/josvr/Documents/GitHub/hci/hci/src/fillPink.png"));
+
+				if (this.mode == Mode.FILL) {
+					dp.getbpList().get(0).changeFillColor(new Color(231, 29, 115), fillPink);
+				} else if (this.mode == Mode.OUTLINE) {
+					dp.getbpList().get(0).changeOutlineColor(new Color(231, 29, 115), outlinePink);
+				}
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			}
 			break;
 		case "colorOrange":
-			if (this.mode == Mode.FILL)
-				dp.getbpList().get(0).changeFillColor(Color.ORANGE);
-			else if (this.mode == Mode.OUTLINE)
-				dp.getbpList().get(0).changeOutlineColor(Color.ORANGE);
+			try {
+				BufferedImage outlineOrange = ImageIO
+						.read(new File("C:/Users/josvr/Documents/GitHub/hci/hci/src/outlineOrange.png"));
+				BufferedImage fillOrange = ImageIO
+						.read(new File("C:/Users/josvr/Documents/GitHub/hci/hci/src/fillOrange.png"));
+
+				if (this.mode == Mode.FILL) {
+					dp.getbpList().get(0).changeFillColor(new Color(233, 78, 27), fillOrange);
+				} else if (this.mode == Mode.OUTLINE) {
+					dp.getbpList().get(0).changeOutlineColor(new Color(233, 78, 27), outlineOrange);
+				}
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			}
 			break;
 		case "colorYellow":
-			if (this.mode == Mode.FILL)
-				dp.getbpList().get(0).changeFillColor(Color.YELLOW);
-			else if (this.mode == Mode.OUTLINE)
-				dp.getbpList().get(0).changeOutlineColor(Color.YELLOW);
+			try {
+				BufferedImage outlineYellow = ImageIO
+						.read(new File("C:/Users/josvr/Documents/GitHub/hci/hci/src/outlineYellow.png"));
+				BufferedImage fillYellow = ImageIO
+						.read(new File("C:/Users/josvr/Documents/GitHub/hci/hci/src/fillYellow.png"));
+
+				if (this.mode == Mode.FILL) {
+					dp.getbpList().get(0).changeFillColor(new Color(252, 234, 16), fillYellow);
+				} else if (this.mode == Mode.OUTLINE) {
+					dp.getbpList().get(0).changeOutlineColor(new Color(252, 234, 16), outlineYellow);
+				}
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			}
 			break;
 		case "colorGreen":
-			if (this.mode == Mode.FILL)
-				dp.getbpList().get(0).changeFillColor(Color.GREEN);
-			else if (this.mode == Mode.OUTLINE)
-				dp.getbpList().get(0).changeOutlineColor(Color.GREEN);
+			try {
+				BufferedImage outlineGreen = ImageIO
+						.read(new File("C:/Users/josvr/Documents/GitHub/hci/hci/src/outlineGreen.png"));
+				BufferedImage fillGreen = ImageIO
+						.read(new File("C:/Users/josvr/Documents/GitHub/hci/hci/src/fillGreen.png"));
+
+				if (this.mode == Mode.FILL) {
+					dp.getbpList().get(0).changeFillColor(new Color(0, 102, 51), fillGreen);
+				} else if (this.mode == Mode.OUTLINE) {
+					dp.getbpList().get(0).changeOutlineColor(new Color(0, 102, 51), outlineGreen);
+				}
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			}
 			break;
 		case "colorBlue":
-			if (this.mode == Mode.FILL)
-				dp.getbpList().get(0).changeFillColor(Color.BLUE);
-			else if (this.mode == Mode.OUTLINE)
-				dp.getbpList().get(0).changeOutlineColor(Color.BLUE);
+			try {
+				BufferedImage outlineBlue = ImageIO
+						.read(new File("C:/Users/josvr/Documents/GitHub/hci/hci/src/outlineBlue.png"));
+				BufferedImage fillBlue = ImageIO
+						.read(new File("C:/Users/josvr/Documents/GitHub/hci/hci/src/fillBlue.png"));
+
+				if (this.mode == Mode.FILL) {
+					dp.getbpList().get(0).changeFillColor(new Color(45, 46, 131), fillBlue);
+				} else if (this.mode == Mode.OUTLINE) {
+					dp.getbpList().get(0).changeOutlineColor(new Color(45, 46, 131), outlineBlue);
+				}
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			}
 			break;
 		case "colorBlack":
-			if (this.mode == Mode.FILL)
-				dp.getbpList().get(0).changeFillColor(Color.BLACK);
-			else if (this.mode == Mode.OUTLINE)
-				dp.getbpList().get(0).changeOutlineColor(Color.BLACK);
+			try {
+				BufferedImage outlineBlack = ImageIO
+						.read(new File("C:/Users/josvr/Documents/GitHub/hci/hci/src/outlineBlack.png"));
+				BufferedImage fillBlack = ImageIO
+						.read(new File("C:/Users/josvr/Documents/GitHub/hci/hci/src/fillBlack.png"));
+
+				if (this.mode == Mode.FILL) {
+					dp.getbpList().get(0).changeFillColor(new Color(29, 29, 27), fillBlack);
+				} else if (this.mode == Mode.OUTLINE) {
+					dp.getbpList().get(0).changeOutlineColor(new Color(29, 29, 27), outlineBlack);
+				}
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			}
 			break;
 		case "colorGray":
-			if (this.mode == Mode.FILL)
-				dp.getbpList().get(0).changeFillColor(Color.GRAY);
-			else if (this.mode == Mode.OUTLINE)
-				dp.getbpList().get(0).changeOutlineColor(Color.GRAY);
+			try {
+				BufferedImage outlineGray = ImageIO
+						.read(new File("C:/Users/josvr/Documents/GitHub/hci/hci/src/outlineGray.png"));
+				BufferedImage fillGray = ImageIO
+						.read(new File("C:/Users/josvr/Documents/GitHub/hci/hci/src/fillGray.png"));
+
+				if (this.mode == Mode.FILL) {
+					dp.getbpList().get(0).changeFillColor(new Color(157, 157, 156), fillGray);
+				} else if (this.mode == Mode.OUTLINE) {
+					dp.getbpList().get(0).changeOutlineColor(new Color(157, 157, 156), outlineGray);
+				}
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			}
 			break;
 		case "colorWhite":
-			if (this.mode == Mode.FILL)
-				dp.getbpList().get(0).changeFillColor(Color.WHITE);
-			else if (this.mode == Mode.OUTLINE)
-				dp.getbpList().get(0).changeOutlineColor(Color.WHITE);
+			try {
+				BufferedImage outlineWhite = ImageIO
+						.read(new File("C:/Users/josvr/Documents/GitHub/hci/hci/src/outlineWhite.png"));
+				BufferedImage fillWhite = ImageIO
+						.read(new File("C:/Users/josvr/Documents/GitHub/hci/hci/src/fillWhite.png"));
+
+				if (this.mode == Mode.FILL) {
+					dp.getbpList().get(0).changeFillColor(new Color(255, 255, 255), fillWhite);
+				} else if (this.mode == Mode.OUTLINE) {
+					dp.getbpList().get(0).changeOutlineColor(new Color(255, 255, 255), outlineWhite);
+				}
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			}
 			break;
 		case "lineWidth":
 			JComboBox lineWidth = (JComboBox) e.getSource();
@@ -232,18 +328,20 @@ public class InputHandler implements ActionListener, MouseListener, MouseMotionL
 					while (!shapeFound && i >= 0) {
 						if (dp.getShapesList().get(i).contains(m.getX(), m.getY())) {
 							shapeFound = true;
-							this.layer = i;
+							this.layer=i;
 						}
 						i--;
 					}
 				}
-			}
-			if (this.layer > -1) {
-				this.resizeDirection = dp.getShapesList().get(this.layer).borderContains(m.getX(), m.getY());
-				if (!resizeDirection.equals(Directions.NA)&& !(this.mode==Mode.TEXT))
-					this.resize = true;
-				else {
-					if (dp.getShapesList().get(dp.getShapesList().size()-1).equals())
+				if (this.layer > -1) {
+					dp.getShapesList().add(dp.getShapesList().get(this.layer));
+					dp.getShapesList().remove(this.layer);
+					this.layer = dp.getShapesList().size() - 1;
+					Drawable shape = dp.getShapesList().get(this.layer);
+					this.resizeDirection = shape.borderContains(m.getX(), m.getY());
+					if (!resizeDirection.equals(Directions.NA) && !(this.mode == Mode.TEXT)) {
+						this.resize = true;
+					}
 				}
 			}
 			break;
@@ -252,6 +350,7 @@ public class InputHandler implements ActionListener, MouseListener, MouseMotionL
 			System.out.println("change coloorr");
 			break;
 		}
+		System.out.println(dp.getShapesList());
 	}
 
 	/**

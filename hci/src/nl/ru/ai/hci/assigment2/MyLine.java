@@ -179,5 +179,39 @@ public class MyLine implements Drawable {
 		// TODO Auto-generated method stub
 		return 0;
 	}
+	
+	public boolean isMyLine(){
+		double[] coordinates = this.getCoordinates();
+		double x1 = coordinates[0];
+		double y1 = coordinates[1];
+		double x2 = coordinates[2];
+		double y2 = coordinates[3];
+		MyLine line = new MyLine(x1,y1,x2,y2,this.fill, this.lineWidth);
+		return line.equals(this);
+	}
+
+	@Override
+	public boolean isMyRectangle() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean isMyEllipse() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean isMyText() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean isMyImage() {
+		// TODO Auto-generated method stub
+		return false;
+	}
 
 }

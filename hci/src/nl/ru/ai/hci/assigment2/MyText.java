@@ -189,4 +189,33 @@ public class MyText implements Drawable {
 	{
 		return this.fontSize;
 	}
+	
+	public boolean isMyText(){
+		MyText text = new MyText(this.text,this.x1,this.y1,this.color, this.fontSize);
+		return text.equals(this);
+	}
+
+	@Override
+	public boolean isMyRectangle() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean isMyEllipse() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean isMyLine() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean isMyImage() {
+		// TODO Auto-generated method stub
+		return false;
+	}
 }

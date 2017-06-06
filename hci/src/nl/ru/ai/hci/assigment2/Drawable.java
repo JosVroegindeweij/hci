@@ -19,4 +19,14 @@ public interface Drawable
 	
 	public int getFontSize();
 	
+	public boolean isMyRectangle();
+	
+	public boolean isMyEllipse();
+	
+	public boolean isMyLine();
+	
+	public boolean isMyText();
+	
+	public boolean isMyImage();
+	
 }

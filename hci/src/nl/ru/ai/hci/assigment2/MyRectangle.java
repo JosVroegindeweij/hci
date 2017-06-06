@@ -190,4 +190,38 @@ public class MyRectangle implements Drawable {
 		// TODO Auto-generated method stub
 		return 0;
 	}
+	
+	public boolean isMyRectangle(){
+		double[] coordinates = this.getCoordinates();
+		double x1 = coordinates[0];
+		double y1 = coordinates[1];
+		double x2 = coordinates[2];
+		double y2 = coordinates[3];
+		MyRectangle rectangle = new MyRectangle(x1,y1,x2,y2,this.fill,this.outline, this.lineWidth);
+		return rectangle.equals(this);
+	}
+
+	@Override
+	public boolean isMyEllipse() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean isMyLine() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean isMyText() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean isMyImage() {
+		// TODO Auto-generated method stub
+		return false;
+	}
 }

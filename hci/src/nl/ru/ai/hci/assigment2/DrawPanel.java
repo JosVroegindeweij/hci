@@ -19,6 +19,7 @@ public class DrawPanel extends JPanel {
 	 * Creates a new DrawPanel
 	 */
 	public DrawPanel() {
+		
 		super();
 	}
 
@@ -59,7 +60,7 @@ public class DrawPanel extends JPanel {
 		this.shapesList.add(new MyEllipse(x1, y1, x2, y2, fill, outline, this.lineWidth));
 	}
 	
-	public void addResizeEllipse(int x1, int y1, int x2, int y2){
+	public void addResizeEllipse(double x1, double y1, double x2, double y2){
 		this.resizeShapes.add(new MyEllipse(x1,y1,x2,y2,Color.GRAY, Color.BLACK, 1));
 	}
 
@@ -204,6 +205,8 @@ public class DrawPanel extends JPanel {
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		Graphics2D g2d = (Graphics2D) g;
+		MyRectangle canvas = new MyRectangle(0, 0, 30000, 30000, new Color(255,255,255), new Color(27,27,26), 1);
+		canvas.draw(g2d);
 		for (Drawable s : shapesList)
 			s.draw(g2d);
 		repaint();

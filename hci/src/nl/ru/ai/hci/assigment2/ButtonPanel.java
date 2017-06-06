@@ -34,8 +34,7 @@ public class ButtonPanel extends JPanel {
 		switch (type) {
 		case SHAPES:
 			try {
-				BufferedImage buttonIcon;
-				buttonIcon = ImageIO.read(new File("C:/Users/Jos/Documents/GitHub/hci/hci/src/ell.png"));
+				BufferedImage buttonIcon = ImageIO.read(new File("C:/Users/josvr/Documents/GitHub/hci/hci/src/ell.png"));
 				JButton ell = new JButton();
 				ell.setIcon(new ImageIcon(buttonIcon));
 				ell.setPreferredSize(new Dimension(100, 100));
@@ -47,8 +46,7 @@ public class ButtonPanel extends JPanel {
 			}
 
 			try {
-				BufferedImage buttonIcon;
-				buttonIcon = ImageIO.read(new File("C:/Users/Jos/Documents/GitHub/hci/hci/src/line.png"));
+				BufferedImage buttonIcon = ImageIO.read(new File("C:/Users/josvr/Documents/GitHub/hci/hci/src/line.png"));
 				JButton line = new JButton();
 				line.setIcon(new ImageIcon(buttonIcon));
 				line.setPreferredSize(new Dimension(100, 100));
@@ -60,8 +58,7 @@ public class ButtonPanel extends JPanel {
 			}
 
 			try {
-				BufferedImage buttonIcon;
-				buttonIcon = ImageIO.read(new File("C:/Users/Jos/Documents/GitHub/hci/hci/src/rec.png"));
+				BufferedImage buttonIcon = ImageIO.read(new File("C:/Users/josvr/Documents/GitHub/hci/hci/src/rec.png"));
 				JButton rec = new JButton();
 				rec.setIcon(new ImageIcon(buttonIcon));
 				rec.setPreferredSize(new Dimension(100, 100));
@@ -73,8 +70,7 @@ public class ButtonPanel extends JPanel {
 			}
 
 			try {
-				BufferedImage buttonIcon;
-				buttonIcon = ImageIO.read(new File("C:/Users/Jos/Documents/GitHub/hci/hci/src/image.png"));
+				BufferedImage buttonIcon = ImageIO.read(new File("C:/Users/josvr/Documents/GitHub/hci/hci/src/image.png"));
 				JButton image = new JButton();
 				image.setIcon(new ImageIcon(buttonIcon));
 				image.setPreferredSize(new Dimension(100, 100));
@@ -86,8 +82,7 @@ public class ButtonPanel extends JPanel {
 			}
 
 			try {
-				BufferedImage buttonIcon;
-				buttonIcon = ImageIO.read(new File("C:/Users/Jos/Documents/GitHub/hci/hci/src/text.png"));
+				BufferedImage buttonIcon = ImageIO.read(new File("C:/Users/josvr/Documents/GitHub/hci/hci/src/text.png"));
 				JButton text = new JButton();
 				text.setIcon(new ImageIcon(buttonIcon));
 				text.setPreferredSize(new Dimension(100, 100));
@@ -99,8 +94,7 @@ public class ButtonPanel extends JPanel {
 			}
 
 			try {
-				BufferedImage buttonIcon;
-				buttonIcon = ImageIO.read(new File("C:/Users/Jos/Documents/GitHub/hci/hci/src/select.jpg"));
+				BufferedImage buttonIcon = ImageIO.read(new File("C:/Users/josvr/Documents/GitHub/hci/hci/src/select.png"));
 				JButton select = new JButton(new ImageIcon(buttonIcon));
 				select.setPreferredSize(new Dimension(100, 100));
 				add(select);
@@ -111,8 +105,7 @@ public class ButtonPanel extends JPanel {
 			}
 
 			try {
-				BufferedImage buttonIcon;
-				buttonIcon = ImageIO.read(new File("C:/Users/Jos/Documents/GitHub/hci/hci/src/del.png"));
+				BufferedImage buttonIcon = ImageIO.read(new File("C:/Users/josvr/Documents/GitHub/hci/hci/src/del.png"));
 				JButton del = new JButton();
 				del.setIcon(new ImageIcon(buttonIcon));
 				del.setPreferredSize(new Dimension(100, 100));
@@ -123,49 +116,49 @@ public class ButtonPanel extends JPanel {
 				e.printStackTrace();
 			}
 			
-			JButton fill = new JButton("fill");
-			add(fill);
-			fill.setPreferredSize(new Dimension(100, 100));
-			fill.addActionListener(input);
-			fill.setActionCommand("fill");
-			this.fill = fill;
+//			JButton fill = new JButton("fill");
+//			add(fill);
+//			fill.setPreferredSize(new Dimension(100, 100));
+//			fill.setBackground(Color.WHITE);
+//			fill.addActionListener(input);
+//			fill.setActionCommand("fill");
+//			this.fill = fill;
+//			
+//			JButton outline = new JButton("outline");
+//			add(outline);
+//			outline.setPreferredSize(new Dimension(100, 100));
+//			outline.setBackground(Color.GRAY);
+//			outline.addActionListener(input);
+//			outline.setActionCommand("outline");
+//			this.outline = outline;
 			
-			JButton outline = new JButton("outline");
-			add(outline);
-			outline.setPreferredSize(new Dimension(100, 100));
-			outline.addActionListener(input);
-			outline.setActionCommand("outline");
-			this.outline = outline;
-			
-			
-					
+			try {
+				BufferedImage buttonIcon = ImageIO.read(new File("C:/Users/josvr/Documents/GitHub/hci/hci/src/fillGray.png"));
+				JButton fill = new JButton();
+				fill.setIcon(new ImageIcon(buttonIcon));
+				add(fill);
+				fill.setBackground(new Color(157,157,156));
+				fill.setPreferredSize(new Dimension(100, 100));
+				fill.addActionListener(input);
+				fill.setActionCommand("fill");
+				this.fill = fill;
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 
-//			try {
-//				BufferedImage buttonIcon = ImageIO.read(new File("C:/Users/Jos/Documents/GitHub/hci/hci/src/fill.png"));
-//				JButton fill = new JButton();
-//				fill.setIcon(new ImageIcon(buttonIcon));
-//				add(fill);
-//				fill.setPreferredSize(new Dimension(100, 100));
-//				fill.addActionListener(input);
-//				fill.setActionCommand("fill");
-//				this.fill = fill;
-//			} catch (IOException e) {
-//				e.printStackTrace();
-//			}
-//
-//			try {
-//				BufferedImage buttonIcon;
-//				buttonIcon = ImageIO.read(new File("C:/Users/Jos/Documents/GitHub/hci/hci/src/outline.png"));
-//				JButton outline = new JButton();
-//				outline.setIcon(new ImageIcon(buttonIcon));
-//				add(outline);
-//				outline.setPreferredSize(new Dimension(100, 100));
-//				outline.addActionListener(input);
-//				outline.setActionCommand("outline");
-//				this.outline = outline;
-//			} catch (IOException e) {
-//				e.printStackTrace();
-//			}
+			try {
+				BufferedImage buttonIcon = ImageIO.read(new File("C:/Users/josvr/Documents/GitHub/hci/hci/src/outlineBlack.png"));
+				JButton outline = new JButton();
+				outline.setBackground(new Color(29,29,27));
+				outline.setIcon(new ImageIcon(buttonIcon));
+				add(outline);
+				outline.setPreferredSize(new Dimension(100, 100));
+				outline.addActionListener(input);
+				outline.setActionCommand("outline");
+				this.outline = outline;
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 
 			String[] fontSizes = { "Font size", "12", "14", "20", "24", "48", "72" };
 			JComboBox fontSize = new JComboBox(fontSizes);
@@ -194,80 +187,82 @@ public class ButtonPanel extends JPanel {
 			colorRed.setPreferredSize(new Dimension(80, 80));
 			colorRed.addActionListener(input);
 			colorRed.setActionCommand("colorRed");
-			colorRed.setBackground(Color.RED);
+			colorRed.setBackground(new Color(190, 22, 34));
 
 			JButton colorMagenta = new JButton("");
 			add(colorMagenta);
 			colorMagenta.setPreferredSize(new Dimension(80, 80));
 			colorMagenta.addActionListener(input);
 			colorMagenta.setActionCommand("colorMagenta");
-			colorMagenta.setBackground(Color.MAGENTA);
+			colorMagenta.setBackground(new Color(102, 36, 131));
 
 			JButton colorPink = new JButton("");
 			add(colorPink);
 			colorPink.setPreferredSize(new Dimension(80, 80));
 			colorPink.addActionListener(input);
 			colorPink.setActionCommand("colorPink");
-			colorPink.setBackground(Color.PINK);
+			colorPink.setBackground(new Color(231, 29, 115));
 
 			JButton colorOrange = new JButton("");
 			add(colorOrange);
 			colorOrange.setPreferredSize(new Dimension(80, 80));
 			colorOrange.addActionListener(input);
 			colorOrange.setActionCommand("colorOrange");
-			colorOrange.setBackground(Color.ORANGE);
+			colorOrange.setBackground(new Color(233, 78, 27));
 
 			JButton colorYellow = new JButton("");
 			add(colorYellow);
 			colorYellow.setPreferredSize(new Dimension(80, 80));
 			colorYellow.addActionListener(input);
 			colorYellow.setActionCommand("colorYellow");
-			colorYellow.setBackground(Color.YELLOW);
+			colorYellow.setBackground(new Color(252, 234, 16));
 
 			JButton colorGreen = new JButton("");
 			add(colorGreen);
 			colorGreen.setPreferredSize(new Dimension(80, 80));
 			colorGreen.addActionListener(input);
 			colorGreen.setActionCommand("colorGreen");
-			colorGreen.setBackground(Color.GREEN);
+			colorGreen.setBackground(new Color(0, 102, 51));
 
 			JButton colorBlue = new JButton("");
 			add(colorBlue);
 			colorBlue.setPreferredSize(new Dimension(80, 80));
 			colorBlue.addActionListener(input);
 			colorBlue.setActionCommand("colorBlue");
-			colorBlue.setBackground(Color.BLUE);
+			colorBlue.setBackground(new Color(45, 46, 131));
 
 			JButton colorBlack = new JButton("");
 			add(colorBlack);
 			colorBlack.setPreferredSize(new Dimension(80, 80));
 			colorBlack.addActionListener(input);
 			colorBlack.setActionCommand("colorBlack");
-			colorBlack.setBackground(Color.BLACK);
+			colorBlack.setBackground(new Color(29, 29, 27));
 
 			JButton colorGray = new JButton("");
 			add(colorGray);
 			colorGray.setPreferredSize(new Dimension(80, 80));
 			colorGray.addActionListener(input);
 			colorGray.setActionCommand("colorGray");
-			colorGray.setBackground(Color.DARK_GRAY);
+			colorGray.setBackground(new Color(157, 157, 156));
 
 			JButton colorWhite = new JButton("");
 			add(colorWhite);
 			colorWhite.setPreferredSize(new Dimension(80, 80));
 			colorWhite.addActionListener(input);
 			colorWhite.setActionCommand("colorWhite");
-			colorWhite.setBackground(Color.WHITE);
+			colorWhite.setBackground(new Color(255, 255, 255));
 			break;
 		}
 	}
 
-	public void changeFillColor(Color fillColor) {
+	public void changeFillColor(Color fillColor, BufferedImage fill) {
 		this.fill.setBackground(fillColor);
+		this.fill.setIcon(new ImageIcon(fill));
 	}
 
-	public void changeOutlineColor(Color outlineColor) {
+	public void changeOutlineColor(Color outlineColor, BufferedImage outline) {
 		this.outline.setBackground(outlineColor);
+		this.outline.setIcon(new ImageIcon(outline));
 	}
 
 	public JButton getFill() {
