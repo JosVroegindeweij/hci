@@ -100,9 +100,9 @@ public class InputHandler implements ActionListener, MouseListener, MouseMotionL
 				BufferedImage fillRed = ImageIO
 						.read(new File("C:/Users/josvr/Documents/GitHub/hci/hci/src/fillRed.png"));
 				if (this.mode == Mode.FILL) {
-					dp.getbpList().get(0).changeFillColor(new Color(190, 22, 34), fillRed);
+					dp.getbpList().get(1).changeFillColor(new Color(190, 22, 34), fillRed);
 				} else if (this.mode == Mode.OUTLINE) {
-					dp.getbpList().get(0).changeOutlineColor(new Color(190, 22, 34), outlineRed);
+					dp.getbpList().get(1).changeOutlineColor(new Color(190, 22, 34), outlineRed);
 				}
 			} catch (IOException e1) {
 				e1.printStackTrace();
@@ -115,9 +115,9 @@ public class InputHandler implements ActionListener, MouseListener, MouseMotionL
 				BufferedImage fillMagenta = ImageIO
 						.read(new File("C:/Users/josvr/Documents/GitHub/hci/hci/src/fillMagenta.png"));
 				if (this.mode == Mode.FILL) {
-					dp.getbpList().get(0).changeFillColor(new Color(102, 36, 131), fillMagenta);
+					dp.getbpList().get(1).changeFillColor(new Color(102, 36, 131), fillMagenta);
 				} else if (this.mode == Mode.OUTLINE) {
-					dp.getbpList().get(0).changeOutlineColor(new Color(102, 36, 131), outlineMagenta);
+					dp.getbpList().get(1).changeOutlineColor(new Color(102, 36, 131), outlineMagenta);
 				}
 			} catch (IOException e1) {
 				e1.printStackTrace();
@@ -131,9 +131,9 @@ public class InputHandler implements ActionListener, MouseListener, MouseMotionL
 						.read(new File("C:/Users/josvr/Documents/GitHub/hci/hci/src/fillPink.png"));
 
 				if (this.mode == Mode.FILL) {
-					dp.getbpList().get(0).changeFillColor(new Color(231, 29, 115), fillPink);
+					dp.getbpList().get(1).changeFillColor(new Color(231, 29, 115), fillPink);
 				} else if (this.mode == Mode.OUTLINE) {
-					dp.getbpList().get(0).changeOutlineColor(new Color(231, 29, 115), outlinePink);
+					dp.getbpList().get(1).changeOutlineColor(new Color(231, 29, 115), outlinePink);
 				}
 			} catch (IOException e1) {
 				e1.printStackTrace();
@@ -147,9 +147,9 @@ public class InputHandler implements ActionListener, MouseListener, MouseMotionL
 						.read(new File("C:/Users/josvr/Documents/GitHub/hci/hci/src/fillOrange.png"));
 
 				if (this.mode == Mode.FILL) {
-					dp.getbpList().get(0).changeFillColor(new Color(233, 78, 27), fillOrange);
+					dp.getbpList().get(1).changeFillColor(new Color(233, 78, 27), fillOrange);
 				} else if (this.mode == Mode.OUTLINE) {
-					dp.getbpList().get(0).changeOutlineColor(new Color(233, 78, 27), outlineOrange);
+					dp.getbpList().get(1).changeOutlineColor(new Color(233, 78, 27), outlineOrange);
 				}
 			} catch (IOException e1) {
 				e1.printStackTrace();
@@ -163,9 +163,9 @@ public class InputHandler implements ActionListener, MouseListener, MouseMotionL
 						.read(new File("C:/Users/josvr/Documents/GitHub/hci/hci/src/fillYellow.png"));
 
 				if (this.mode == Mode.FILL) {
-					dp.getbpList().get(0).changeFillColor(new Color(252, 234, 16), fillYellow);
+					dp.getbpList().get(1).changeFillColor(new Color(252, 234, 16), fillYellow);
 				} else if (this.mode == Mode.OUTLINE) {
-					dp.getbpList().get(0).changeOutlineColor(new Color(252, 234, 16), outlineYellow);
+					dp.getbpList().get(1).changeOutlineColor(new Color(252, 234, 16), outlineYellow);
 				}
 			} catch (IOException e1) {
 				e1.printStackTrace();
@@ -179,9 +179,9 @@ public class InputHandler implements ActionListener, MouseListener, MouseMotionL
 						.read(new File("C:/Users/josvr/Documents/GitHub/hci/hci/src/fillGreen.png"));
 
 				if (this.mode == Mode.FILL) {
-					dp.getbpList().get(0).changeFillColor(new Color(0, 102, 51), fillGreen);
+					dp.getbpList().get(1).changeFillColor(new Color(0, 102, 51), fillGreen);
 				} else if (this.mode == Mode.OUTLINE) {
-					dp.getbpList().get(0).changeOutlineColor(new Color(0, 102, 51), outlineGreen);
+					dp.getbpList().get(1).changeOutlineColor(new Color(0, 102, 51), outlineGreen);
 				}
 			} catch (IOException e1) {
 				e1.printStackTrace();
@@ -195,9 +195,9 @@ public class InputHandler implements ActionListener, MouseListener, MouseMotionL
 						.read(new File("C:/Users/josvr/Documents/GitHub/hci/hci/src/fillBlue.png"));
 
 				if (this.mode == Mode.FILL) {
-					dp.getbpList().get(0).changeFillColor(new Color(45, 46, 131), fillBlue);
+					dp.getbpList().get(1).changeFillColor(new Color(45, 46, 131), fillBlue);
 				} else if (this.mode == Mode.OUTLINE) {
-					dp.getbpList().get(0).changeOutlineColor(new Color(45, 46, 131), outlineBlue);
+					dp.getbpList().get(1).changeOutlineColor(new Color(45, 46, 131), outlineBlue);
 				}
 			} catch (IOException e1) {
 				e1.printStackTrace();
@@ -211,9 +211,9 @@ public class InputHandler implements ActionListener, MouseListener, MouseMotionL
 						.read(new File("C:/Users/josvr/Documents/GitHub/hci/hci/src/fillBlack.png"));
 
 				if (this.mode == Mode.FILL) {
-					dp.getbpList().get(0).changeFillColor(new Color(29, 29, 27), fillBlack);
+					dp.getbpList().get(1).changeFillColor(new Color(29, 29, 27), fillBlack);
 				} else if (this.mode == Mode.OUTLINE) {
-					dp.getbpList().get(0).changeOutlineColor(new Color(29, 29, 27), outlineBlack);
+					dp.getbpList().get(1).changeOutlineColor(new Color(29, 29, 27), outlineBlack);
 				}
 			} catch (IOException e1) {
 				e1.printStackTrace();
@@ -227,9 +227,9 @@ public class InputHandler implements ActionListener, MouseListener, MouseMotionL
 						.read(new File("C:/Users/josvr/Documents/GitHub/hci/hci/src/fillGray.png"));
 
 				if (this.mode == Mode.FILL) {
-					dp.getbpList().get(0).changeFillColor(new Color(157, 157, 156), fillGray);
+					dp.getbpList().get(1).changeFillColor(new Color(157, 157, 156), fillGray);
 				} else if (this.mode == Mode.OUTLINE) {
-					dp.getbpList().get(0).changeOutlineColor(new Color(157, 157, 156), outlineGray);
+					dp.getbpList().get(1).changeOutlineColor(new Color(157, 157, 156), outlineGray);
 				}
 			} catch (IOException e1) {
 				e1.printStackTrace();
@@ -243,9 +243,9 @@ public class InputHandler implements ActionListener, MouseListener, MouseMotionL
 						.read(new File("C:/Users/josvr/Documents/GitHub/hci/hci/src/fillWhite.png"));
 
 				if (this.mode == Mode.FILL) {
-					dp.getbpList().get(0).changeFillColor(new Color(255, 255, 255), fillWhite);
+					dp.getbpList().get(1).changeFillColor(new Color(255, 255, 255), fillWhite);
 				} else if (this.mode == Mode.OUTLINE) {
-					dp.getbpList().get(0).changeOutlineColor(new Color(255, 255, 255), outlineWhite);
+					dp.getbpList().get(1).changeOutlineColor(new Color(255, 255, 255), outlineWhite);
 				}
 			} catch (IOException e1) {
 				e1.printStackTrace();
@@ -295,8 +295,8 @@ public class InputHandler implements ActionListener, MouseListener, MouseMotionL
 	public void mousePressed(MouseEvent m) {
 		System.out.println("x=" + m.getX() + "y=" + m.getY());
 		System.out.println("MousePressed");
-		Color fillColor = dp.getbpList().get(0).getFill().getBackground();
-		Color outlineColor = dp.getbpList().get(0).getOutline().getBackground();
+		Color fillColor = dp.getbpList().get(1).getFill().getBackground();
+		Color outlineColor = dp.getbpList().get(1).getOutline().getBackground();
 		switch (this.mode) {
 		case RECTANGLE:
 			dp.addRectangle(m.getX(), m.getY(), fillColor, outlineColor);
@@ -328,7 +328,7 @@ public class InputHandler implements ActionListener, MouseListener, MouseMotionL
 					while (!shapeFound && i >= 0) {
 						if (dp.getShapesList().get(i).contains(m.getX(), m.getY())) {
 							shapeFound = true;
-							this.layer=i;
+							this.layer = i;
 						}
 						i--;
 					}
@@ -344,6 +344,29 @@ public class InputHandler implements ActionListener, MouseListener, MouseMotionL
 					}
 				}
 			}
+//			if (this.layer > -1) {
+//				Drawable shape = dp.getShapesList().get(this.layer);
+//				if (shape.isMyEllipse() || shape.isMyImage() || shape.isMyRectangle()) {
+//					System.out.println("hi");
+//					dp.getResizeShapesList()
+//							.add(new MyRectangle(shape.getCoordinates()[0] - 10, shape.getCoordinates()[1] - 10,
+//									shape.getCoordinates()[0] + 10, shape.getCoordinates()[1] + 10,
+//									new Color(255, 255, 255), new Color(0, 0, 0), 1, this.dp));
+//					dp.getResizeShapesList()
+//							.add(new MyRectangle(shape.getCoordinates()[2] - 10, shape.getCoordinates()[1] - 10,
+//									shape.getCoordinates()[2] + 10, shape.getCoordinates()[1] + 10,
+//									new Color(255, 255, 255), new Color(0, 0, 0), 1, this.dp));
+//					dp.getResizeShapesList()
+//							.add(new MyRectangle(shape.getCoordinates()[2] - 10, shape.getCoordinates()[3] - 10,
+//									shape.getCoordinates()[2] + 10, shape.getCoordinates()[3] + 10,
+//									new Color(255, 255, 255), new Color(0, 0, 0), 1, this.dp));
+//					dp.getResizeShapesList()
+//							.add(new MyRectangle(shape.getCoordinates()[0] - 10, shape.getCoordinates()[3] - 10,
+//									shape.getCoordinates()[0] + 10, shape.getCoordinates()[3] + 10,
+//									new Color(255, 255, 255), new Color(0, 0, 0), 1, this.dp));
+//				}
+//
+//			}
 			break;
 		default:
 			dp.changeShapeColor(m.getX(), m.getY());
@@ -381,6 +404,50 @@ public class InputHandler implements ActionListener, MouseListener, MouseMotionL
 						double x1 = m.getX() - this.xDiff;
 						double y1 = m.getY() - this.yDiff;
 						shape.setCoordinates(x1, y1, x1 + width, y1 + height);
+
+						// for (int i = 0; i < 4; i++) {
+						// Drawable resizeShape =
+						// dp.getResizeShapesList().get(i);
+						// double[] resizeCoordinates =
+						// resizeShape.getCoordinates();
+						// double resizeWidth = resizeCoordinates[2] -
+						// resizeCoordinates[0];
+						// double resizeHeight = resizeCoordinates[3] -
+						// resizeCoordinates[1];
+						// double resizex1 = m.getX() - this.xDiff;
+						// double resizey1 = m.getY() - this.yDiff;
+						// resizeShape.setCoordinates(resizex1, resizey1,
+						// resizex1 + resizeWidth, resizey1 + resizeHeight);
+						//
+						// dp.getResizeShapesList()
+						// .add(new MyRectangle(shape.getCoordinates()[0] - 10,
+						// shape.getCoordinates()[1] - 10,
+						// shape.getCoordinates()[0] + 10,
+						// shape.getCoordinates()[1] + 10,
+						// new Color(255, 255, 255), new Color(0, 0, 0), 1,
+						// this.dp));
+						// dp.getResizeShapesList()
+						// .add(new MyRectangle(shape.getCoordinates()[2] - 10,
+						// shape.getCoordinates()[1] - 10,
+						// shape.getCoordinates()[2] + 10,
+						// shape.getCoordinates()[1] + 10,
+						// new Color(255, 255, 255), new Color(0, 0, 0), 1,
+						// this.dp));
+						// dp.getResizeShapesList()
+						// .add(new MyRectangle(shape.getCoordinates()[2] - 10,
+						// shape.getCoordinates()[3] - 10,
+						// shape.getCoordinates()[2] + 10,
+						// shape.getCoordinates()[3] + 10,
+						// new Color(255, 255, 255), new Color(0, 0, 0), 1,
+						// this.dp));
+						// dp.getResizeShapesList()
+						// .add(new MyRectangle(shape.getCoordinates()[0] - 10,
+						// shape.getCoordinates()[3] - 10,
+						// shape.getCoordinates()[0] + 10,
+						// shape.getCoordinates()[3] + 10,
+						// new Color(255, 255, 255), new Color(0, 0, 0), 1,
+						// this.dp));
+						// }
 					}
 				}
 			} else if (this.mode != Mode.TEXT) {

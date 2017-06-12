@@ -144,17 +144,17 @@ public class MyImage implements Drawable {
 
 	@Override
 	public Directions borderContains(int x, int y) {
-		if (Line2D.ptSegDist(x1, y1, x1 + (getWidth() / 2), y1, x, y) < 10
-				|| Line2D.ptSegDist(x1, y1, x1, y1 + (getHeight() / 2), x, y) < 10)
+		if (Line2D.ptSegDist(x1, y1, x1 + (getWidth() / 2), y1, x, y) < 20
+				|| Line2D.ptSegDist(x1, y1, x1, y1 + (getHeight() / 2), x, y) < 20)
 			return Directions.NW;
-		else if (Line2D.ptSegDist(x1 + (getWidth() / 2), y1, x2, y1, x, y) < 10
-				|| Line2D.ptSegDist(x2, y1, x2, y1 + (getHeight() / 2), x, y) < 10)
+		else if (Line2D.ptSegDist(x1 + (getWidth() / 2), y1, x2, y1, x, y) < 20
+				|| Line2D.ptSegDist(x2, y1, x2, y1 + (getHeight() / 2), x, y) < 20)
 			return Directions.NE;
-		else if (Line2D.ptSegDist(x2, y1 + (getHeight() / 2), x2, y2, x, y) < 10
-				|| Line2D.ptSegDist(x1 + (getWidth() / 2), y2, x2, y2, x, y) < 10)
+		else if (Line2D.ptSegDist(x2, y1 + (getHeight() / 2), x2, y2, x, y) < 20
+				|| Line2D.ptSegDist(x1 + (getWidth() / 2), y2, x2, y2, x, y) < 20)
 			return Directions.SE;
-		else if (Line2D.ptSegDist(x1, y1 + (getHeight() / 2), x1, y2, x, y) < 10
-				|| Line2D.ptSegDist(x1, y2, x1 + (getWidth() / 2), y2, x, y) < 10)
+		else if (Line2D.ptSegDist(x1, y1 + (getHeight() / 2), x1, y2, x, y) < 20
+				|| Line2D.ptSegDist(x1, y2, x1 + (getWidth() / 2), y2, x, y) < 20)
 			return Directions.SW;
 
 		return Directions.NA;

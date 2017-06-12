@@ -148,15 +148,7 @@ public class MyLine implements Drawable {
 				y) < 10;
 	}
 
-	@Override
-	public Directions borderContains(int x, int y) {
-		//Not finished yet, doesn't completely work
-			if (Math.sqrt((getStartX() - x) * (getStartX() - x) + (getStartY() - y) * (getStartY() - y)) < 10)
-				return Directions.W;
-			else if (Math.sqrt((getStartX()+getWidth() - x) * (getStartX()+getWidth() - x) + (getStartY()+getHeight() - y) * (getStartY()+getHeight() - y)) < 10)
-				return Directions.E;
-		return Directions.NA;
-	}
+	
 
 	/**
 	 * returns the string "Line"
@@ -212,6 +204,16 @@ public class MyLine implements Drawable {
 	public boolean isMyImage() {
 		// TODO Auto-generated method stub
 		return false;
+	}
+
+	@Override
+	public Directions borderContains(int x, int y) {
+		//Not finished yet, doesn't completely work
+		if (Math.sqrt((getStartX() - x) * (getStartX() - x) + (getStartY() - y) * (getStartY() - y)) < 10)
+			return Directions.W;
+		else if (Math.sqrt((getStartX()+getWidth() - x) * (getStartX()+getWidth() - x) + (getStartY()+getHeight() - y) * (getStartY()+getHeight() - y)) < 10)
+			return Directions.E;
+	return Directions.NA;
 	}
 
 }

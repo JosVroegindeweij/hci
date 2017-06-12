@@ -9,7 +9,7 @@ import javax.swing.JPanel;
 
 public class DrawPanel extends JPanel {
 	private ArrayList<Drawable> shapesList = new ArrayList<Drawable>();
-	private ArrayList<MyEllipse> resizeShapes = new ArrayList<MyEllipse>();
+	private ArrayList<Drawable> resizeShapesList = new ArrayList<Drawable>();
 	private ArrayList<ButtonPanel> bpList = new ArrayList<ButtonPanel>();
 	private int lineWidth;
 	private int fontSize = 20;
@@ -58,10 +58,6 @@ public class DrawPanel extends JPanel {
 		int y2 = y1;
 		System.out.println("linewidth="+lineWidth);
 		this.shapesList.add(new MyEllipse(x1, y1, x2, y2, fill, outline, this.lineWidth));
-	}
-	
-	public void addResizeEllipse(double x1, double y1, double x2, double y2){
-		this.resizeShapes.add(new MyEllipse(x1,y1,x2,y2,Color.GRAY, Color.BLACK, 1));
 	}
 
 	/**
@@ -214,6 +210,10 @@ public class DrawPanel extends JPanel {
 
 	public ArrayList<Drawable> getShapesList() {
 		return this.shapesList;
+	}
+	
+	public ArrayList<Drawable> getResizeShapesList() {
+		return this.resizeShapesList;
 	}
 
 	public void addButtonPanel(ArrayList<ButtonPanel> bpList) {
