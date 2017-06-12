@@ -76,7 +76,6 @@ public class InputHandler implements ActionListener, MouseListener, MouseMotionL
 			break;
 		case "text":
 			this.mode = Mode.TEXT;
-			System.out.println("textttt");
 			this.text = JOptionPane.showInputDialog("What text do you want to display?");
 			break;
 		case "image":
@@ -293,8 +292,6 @@ public class InputHandler implements ActionListener, MouseListener, MouseMotionL
 	 */
 	@Override
 	public void mousePressed(MouseEvent m) {
-		System.out.println("x=" + m.getX() + "y=" + m.getY());
-		System.out.println("MousePressed");
 		Color fillColor = dp.getbpList().get(1).getFill().getBackground();
 		Color outlineColor = dp.getbpList().get(1).getOutline().getBackground();
 		switch (this.mode) {
@@ -344,36 +341,11 @@ public class InputHandler implements ActionListener, MouseListener, MouseMotionL
 					}
 				}
 			}
-//			if (this.layer > -1) {
-//				Drawable shape = dp.getShapesList().get(this.layer);
-//				if (shape.isMyEllipse() || shape.isMyImage() || shape.isMyRectangle()) {
-//					System.out.println("hi");
-//					dp.getResizeShapesList()
-//							.add(new MyRectangle(shape.getCoordinates()[0] - 10, shape.getCoordinates()[1] - 10,
-//									shape.getCoordinates()[0] + 10, shape.getCoordinates()[1] + 10,
-//									new Color(255, 255, 255), new Color(0, 0, 0), 1, this.dp));
-//					dp.getResizeShapesList()
-//							.add(new MyRectangle(shape.getCoordinates()[2] - 10, shape.getCoordinates()[1] - 10,
-//									shape.getCoordinates()[2] + 10, shape.getCoordinates()[1] + 10,
-//									new Color(255, 255, 255), new Color(0, 0, 0), 1, this.dp));
-//					dp.getResizeShapesList()
-//							.add(new MyRectangle(shape.getCoordinates()[2] - 10, shape.getCoordinates()[3] - 10,
-//									shape.getCoordinates()[2] + 10, shape.getCoordinates()[3] + 10,
-//									new Color(255, 255, 255), new Color(0, 0, 0), 1, this.dp));
-//					dp.getResizeShapesList()
-//							.add(new MyRectangle(shape.getCoordinates()[0] - 10, shape.getCoordinates()[3] - 10,
-//									shape.getCoordinates()[0] + 10, shape.getCoordinates()[3] + 10,
-//									new Color(255, 255, 255), new Color(0, 0, 0), 1, this.dp));
-//				}
-//
-//			}
 			break;
 		default:
 			dp.changeShapeColor(m.getX(), m.getY());
-			System.out.println("change coloorr");
 			break;
 		}
-		System.out.println(dp.getShapesList());
 	}
 
 	/**
@@ -390,10 +362,8 @@ public class InputHandler implements ActionListener, MouseListener, MouseMotionL
 				if (this.layer > -1) {
 					Drawable shape = dp.getShapesList().get(this.layer);
 					if (this.resize) {
-						System.out.println("wtf is going on");
 						changeCoordinates(m, shape, this.resizeDirection);
 					} else {
-						System.out.println("WERE AT THE GETCOORDINATES STATE");
 						double[] coordinates = shape.getCoordinates();
 						if (this.xDiff == -1 && this.yDiff == -1) {
 							xDiff = m.getX() - coordinates[0];
@@ -405,49 +375,6 @@ public class InputHandler implements ActionListener, MouseListener, MouseMotionL
 						double y1 = m.getY() - this.yDiff;
 						shape.setCoordinates(x1, y1, x1 + width, y1 + height);
 
-						// for (int i = 0; i < 4; i++) {
-						// Drawable resizeShape =
-						// dp.getResizeShapesList().get(i);
-						// double[] resizeCoordinates =
-						// resizeShape.getCoordinates();
-						// double resizeWidth = resizeCoordinates[2] -
-						// resizeCoordinates[0];
-						// double resizeHeight = resizeCoordinates[3] -
-						// resizeCoordinates[1];
-						// double resizex1 = m.getX() - this.xDiff;
-						// double resizey1 = m.getY() - this.yDiff;
-						// resizeShape.setCoordinates(resizex1, resizey1,
-						// resizex1 + resizeWidth, resizey1 + resizeHeight);
-						//
-						// dp.getResizeShapesList()
-						// .add(new MyRectangle(shape.getCoordinates()[0] - 10,
-						// shape.getCoordinates()[1] - 10,
-						// shape.getCoordinates()[0] + 10,
-						// shape.getCoordinates()[1] + 10,
-						// new Color(255, 255, 255), new Color(0, 0, 0), 1,
-						// this.dp));
-						// dp.getResizeShapesList()
-						// .add(new MyRectangle(shape.getCoordinates()[2] - 10,
-						// shape.getCoordinates()[1] - 10,
-						// shape.getCoordinates()[2] + 10,
-						// shape.getCoordinates()[1] + 10,
-						// new Color(255, 255, 255), new Color(0, 0, 0), 1,
-						// this.dp));
-						// dp.getResizeShapesList()
-						// .add(new MyRectangle(shape.getCoordinates()[2] - 10,
-						// shape.getCoordinates()[3] - 10,
-						// shape.getCoordinates()[2] + 10,
-						// shape.getCoordinates()[3] + 10,
-						// new Color(255, 255, 255), new Color(0, 0, 0), 1,
-						// this.dp));
-						// dp.getResizeShapesList()
-						// .add(new MyRectangle(shape.getCoordinates()[0] - 10,
-						// shape.getCoordinates()[3] - 10,
-						// shape.getCoordinates()[0] + 10,
-						// shape.getCoordinates()[3] + 10,
-						// new Color(255, 255, 255), new Color(0, 0, 0), 1,
-						// this.dp));
-						// }
 					}
 				}
 			} else if (this.mode != Mode.TEXT) {
@@ -458,7 +385,6 @@ public class InputHandler implements ActionListener, MouseListener, MouseMotionL
 				double x2 = m.getX();
 				double y2 = m.getY();
 				shape.setCoordinates(x1, y1, x2, y2);
-				// System.out.println("WERE AT THE GETCOORDINATES STATE2");
 
 			}
 		}

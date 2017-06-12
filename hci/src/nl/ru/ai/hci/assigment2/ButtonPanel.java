@@ -113,28 +113,6 @@ public class ButtonPanel extends JPanel {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-
-
-
-
-			
-//			JButton fill = new JButton("fill");
-//			add(fill);
-//			fill.setPreferredSize(new Dimension(100, 100));
-//			fill.setBackground(Color.WHITE);
-//			fill.addActionListener(input);
-//			fill.setActionCommand("fill");
-//			this.fill = fill;
-//			
-//			JButton outline = new JButton("outline");
-//			add(outline);
-//			outline.setPreferredSize(new Dimension(100, 100));
-//			outline.setBackground(Color.GRAY);
-//			outline.addActionListener(input);
-//			outline.setActionCommand("outline");
-//			this.outline = outline;
-			
-
 			
 			try {
 				BufferedImage buttonIcon = ImageIO.read(new File("C:/Users/josvr/Documents/GitHub/hci/hci/src/text.png"));

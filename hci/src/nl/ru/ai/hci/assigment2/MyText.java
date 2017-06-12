@@ -58,7 +58,6 @@ public class MyText implements Drawable {
 		height = g.getFontMetrics().getHeight();
 		x2 = x1 + width;
 		y1 = y2 - height;
-		//g.drawRect(x, (int) y1, (int)width, (int)height);
 	}
 
 	/**
@@ -120,12 +119,6 @@ public class MyText implements Drawable {
 		
 	}
 
-	// @Override
-	// public void setColor(Color c)
-	// {
-	// this.color = c;
-	// }
-
 	/**
 	 * gets the current coordinates of the Text and returns it in an array
 	 * 
@@ -145,8 +138,6 @@ public class MyText implements Drawable {
 	 */
 	@Override
 	public boolean contains(int x, int y) {
-		//Sysout.println("x1="+this.x1+" x2="+ this.x2 + " y1=" + this.y1 + " y2=" + this.y2);
-		System.out.println(x > Math.min(x1, x2) && x < Math.max(x1, x2) && y > Math.min(y1, y2) && y < Math.max(y1, y2));
 		return (x > Math.min(x1, x2) && x < Math.max(x1, x2) && y > Math.min(y1, y2) && y < Math.max(y1, y2));
 	}
 

@@ -14,12 +14,11 @@ public class DrawPanel extends JPanel {
 	private int lineWidth;
 	private int fontSize = 20;
 
-
 	/**
 	 * Creates a new DrawPanel
 	 */
 	public DrawPanel() {
-		
+
 		super();
 	}
 
@@ -56,7 +55,6 @@ public class DrawPanel extends JPanel {
 	public void addEllipse(int x1, int y1, Color fill, Color outline) {
 		int x2 = x1;
 		int y2 = y1;
-		System.out.println("linewidth="+lineWidth);
 		this.shapesList.add(new MyEllipse(x1, y1, x2, y2, fill, outline, this.lineWidth));
 	}
 
@@ -81,17 +79,15 @@ public class DrawPanel extends JPanel {
 		int y2 = y1;
 		this.shapesList.add(new MyImage(img, x1, y1, x2, y2));
 	}
-	
+
 	public void addText(String text, int x1, int y2, Color fill) {
 		this.shapesList.add(new MyText(text, x1, y2, fill, this.fontSize));
-		System.out.println("ïn the goddam shapeslist");
 	}
-	
+
 	public void resizeShape(int xClick, int yClick) {
-		
-		
-	}	
-	
+
+	}
+
 	/**
 	 * delete shape(s) that contain the coordinates where you clicked
 	 * 
@@ -111,8 +107,7 @@ public class DrawPanel extends JPanel {
 				}
 				i--;
 			}
-		} else
-			System.out.println("There is no shape to delete.");
+		}
 	}
 
 	/**
@@ -128,8 +123,8 @@ public class DrawPanel extends JPanel {
 	 *            = color of the outline
 	 */
 	public void changeShapeColor(int xClick, int yClick) {
-		Color fill = bpList.get(0).getFill().getBackground();
-		Color outline = bpList.get(0).getOutline().getBackground();
+		Color fill = bpList.get(1).getFill().getBackground();
+		Color outline = bpList.get(1).getOutline().getBackground();
 		if (shapesList.size() > 0) {
 			boolean shapeFound = false;
 			int i = shapesList.size() - 1;
@@ -147,61 +142,21 @@ public class DrawPanel extends JPanel {
 					if (shapesList.get(i).shape() == "Line")
 						shapesList.add(new MyLine(x1, y1, x2, y2, fill, this.lineWidth));
 					if (shapesList.get(i).shape() == "Text")
-						shapesList.add(new MyText(shapesList.get(i).getText(), x1, y1, fill, shapesList.get(i).getFontSize()));
+						shapesList.add(
+								new MyText(shapesList.get(i).getText(), x1, y1, fill, shapesList.get(i).getFontSize()));
 					shapesList.remove(shapesList.get(i));
 					shapeFound = true;
 				}
 				i--;
 			}
-		} else
-			System.out.println("There is no shape to change.");
+		}
 	}
-
-	// /**
-	// * Changes color of the outline of a shape
-	// *
-	// * @param xClick
-	// * = x-coordinate of click
-	// * @param yClick
-	// * = y-coordinate of click
-	// * @param fill
-	// * = color of the fill
-	// * @param outline
-	// * = color of the outline
-	// */
-	// public void changeOutline(int xClick, int yClick) {
-	// Color fill = bpList.get(0).getFill().getBackground();
-	// Color outline = bpList.get(0).getOutline().getBackground();
-	// if (shapesList.size() > 0) {
-	// boolean shapeFound = false;
-	// int i = shapesList.size() - 1;
-	// while (!shapeFound && i >= 0) {
-	// if (shapesList.get(i).contains(xClick, yClick)) {
-	// double[] coordinates = shapesList.get(i).getCoordinates();
-	// double x1 = coordinates[0];
-	// double y1 = coordinates[1];
-	// double x2 = coordinates[2];
-	// double y2 = coordinates[3];
-	// if (shapesList.get(i).shape() == "Ellipse")
-	// shapesList.add(new MyEllipse(x1, y1, x2, y2, fill, outline));
-	// if (shapesList.get(i).shape() == "Rectangle")
-	// shapesList.add(new MyRectangle(x1, y1, x2, y2, fill, outline));
-	// if (shapesList.get(i).shape() == "Line")
-	// shapesList.add(new MyLine(x1, y1, x2, y2, fill));
-	// shapesList.remove(shapesList.get(i));
-	// shapeFound = true;
-	// }
-	// i--;
-	// }
-	// } else
-	// System.out.println("There is no shape to change.");
-	// }
 
 	@Override
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		Graphics2D g2d = (Graphics2D) g;
-		MyRectangle canvas = new MyRectangle(0, 0, 30000, 30000, new Color(255,255,255), new Color(27,27,26), 1);
+		MyRectangle canvas = new MyRectangle(0, 0, 30000, 30000, new Color(255, 255, 255), new Color(27, 27, 26), 1);
 		canvas.draw(g2d);
 		for (Drawable s : shapesList)
 			s.draw(g2d);
@@ -211,7 +166,7 @@ public class DrawPanel extends JPanel {
 	public ArrayList<Drawable> getShapesList() {
 		return this.shapesList;
 	}
-	
+
 	public ArrayList<Drawable> getResizeShapesList() {
 		return this.resizeShapesList;
 	}
@@ -223,14 +178,13 @@ public class DrawPanel extends JPanel {
 	public ArrayList<ButtonPanel> getbpList() {
 		return this.bpList;
 	}
-	
-	public void changeLineWidth(int lineWidth){
+
+	public void changeLineWidth(int lineWidth) {
 		this.lineWidth = lineWidth;
 	}
 
 	public void changefontSize(int fontSize) {
 		this.fontSize = fontSize;
 	}
-	
 
 }

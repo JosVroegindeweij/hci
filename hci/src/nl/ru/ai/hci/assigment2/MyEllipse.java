@@ -36,7 +36,6 @@ public class MyEllipse implements Drawable {
 		this.y2 = y2;
 		this.fill = fill;
 		this.outline = outline;
-		System.out.println("linewidth2="+lineWidth);
 		this.lineWidth = lineWidth;
 		
 	}
@@ -157,10 +156,7 @@ public class MyEllipse implements Drawable {
 		return Directions.NA;
 	}
 
-	// @Override
-	// public void setColor(Color c) {
-	// // TODO Auto-generated method stub
-	// }
+	
 	/**
 	 * returns the string "Ellipse"
 	 * @return "Ellipse"
